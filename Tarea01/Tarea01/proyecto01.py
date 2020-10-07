@@ -10,6 +10,9 @@ EL programa devuelve en la salida estandar la ciudad, la descripción del clima,
 la temperatura mínima, la temperatura máxima y la humedad.
 """
 
+llave_api = '56de92f593ea497ac17dd421c9fed113'
+url_base = 'api.openweathermap.org/data/2.5/weather?'
+
 def main():
     diccionario_ciudades = lectura('resources/dataset1.csv')  #Lectura de csv1
     diccionario_ciudades_uno = lectura('resources/dataset2.csv') #Lectura de csv2
@@ -29,6 +32,7 @@ Devulve un diccionario con la información del csv.
 """
 def lectura(hoja):
     try:
+        
         #Calusula en caso de que no se reciba el archivo correcto
         with open(hoja, newline='') as csvFile:
             reader = csv.DictReader(csvFile)
