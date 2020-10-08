@@ -17,7 +17,7 @@ def peticiones(diccionario):
         if cont >= 30:
             waiter.wait([1] * 30)
             cont = 0
-        url = url_base + "q=" + "Guadalajara" + "&units=metric&appid=" + llave_api
+        url = url_base + "q=" + ciudad + "&units=metric&appid=" + llave_api
         respuesta = requests.get(url)
         if respuesta.status_code() != 404:
             nuevo_diccionario[ciudad] = respuesta.json()
