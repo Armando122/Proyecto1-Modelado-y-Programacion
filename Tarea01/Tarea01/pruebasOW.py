@@ -31,6 +31,7 @@ def peticiones(diccionario):
             nuevo_diccionario[ciudad] = respuesta.json()
             cont += 1
             print('Not Found.')
+    return nuevo_diccionario
 
 
 if __name__ == "__main__":
