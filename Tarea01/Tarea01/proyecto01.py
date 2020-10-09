@@ -33,37 +33,48 @@ def main():
 """
 Método peticiones.
 Recibe un diccionario con las ciudades de las cuales se quiere obtener el clima.
-Regresa un diccionario
+Regresa un diccionario cuyas llaves son las ciudades y están emparejadas con su clima.
 """
 def peticiones(diccionario):
-
+    #Crea un contador para dosificar las peticiones
     cont = 0
+    #Crea un nuevo diccionario para emparejar las ciudades con su clima,
+    #este diccionario se regresará para impresión.
     nuevo_diccionario = { }
 
+    #Ciclo para recorrer todo el diccionario recibido.
     for ciudad in diccionario.keys():
         if cont >= 30:
+            #Despuñes de 30 peticiones, el programa espera 30 segundos.
             waiter.wait([1] * 30)
+            #Reinicia el contador.
             cont = 0
+        #Se realiza la petición a OpenWeather con el nombre de la ciudad y
+        #se recibe la respuesta.
         url = url_base + "q=" + ciudad + "&units=metric&lang=es&appid=" + llave_api
         respuesta = requests.get(url)
 
         if respuesta.status_code != 404:
+            #Si la petición es exitosa, se empareja el nombre de la ciudades
+            #con el clima obtenido en la petición.
             nuevo_diccionario[ciudad] = respuesta.json()
+            #Actualiza el contador al terminar la petición.
             cont+= 1
-            print('Success!')
 
         if not is_empty(diccionario[ciudad]):
+            #Si la petición no tiene exito y la ciudad tiene cordenadas,
+            #se realiza una petición con ellas.
             latitud = diccionario[ciudad][0]
             longitud = diccionario[ciudad][1]
             url = url_base + "lat=" + latitud + "&lon=" + longitud + "&units=metric&lang=es&appid=" + llave_api
             respuesta = requests.get(url)
+            #Se empareja la ciudad con el clima recuperado.
             nuevo_diccionario[ciudad] = respuesta.json()
+            #Actualiza el contador al terminar la petición.
             cont += 1
-            print('Not Found.')
-
         else:
             continue
-
+    #Regresa el dicionario que empareja todas las ciudades con sus climas.
     return nuevo_diccionario
 
     #Por hacer:
