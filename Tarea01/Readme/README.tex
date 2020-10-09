@@ -9,7 +9,47 @@
 \maketitle
 
 \section{Definición del problema}
+
+Fuimos contratados por el aeropuerto de la Ciudad de México, para realizar un programa que devolviera el clima de las ciudades destino de 3 mil tickets diferentes. No es necesaria la interacción con el usuario, sólo la impresión de los climas.
+
 \section{Análisis del problema}
+
+Se necesita una maera eficaz de leer los 3 mil datos distintos, guardarlos y 
+poder accedar a ellos de manera rápida y directa. De la misma manera, es 
+necesaria una forma de emparejar el clima con su ciudad correspondiente.
+
+Para devolver el clima, se hizo uso de el API de OpenWeatherMap. Este API
+solo permite hasta 60 peticiones por minuto, así que se necesita una 
+manera de dosificar las peticiones y medir el tiempo.
+
+Como no es necesaria la interacción con el usuario, se necesita 
+una manera de informar los climas de todas las ciudades sin distinción del 
+ticket en el que aparezcan. Es decir, sin emparejar ciudad origen con 
+destino. Por lo tanto, una opción es recolectar todas las ciudades 
+diferentes que aparezcan en los tickets y emparejarlas con su clima, así 
+se evitan hacer dos llamadas para una misma ciudad.
+
+Al ver los \emph{dataset} recibidos, se nota que algunos tickes incluyen 
+un origen diferente a la Ciudad de México, iguamente se tomaron esas 
+ciudades en cuenta para devolver el clima. Para los vuelos nacionales las 
+ciudades están en código IATA, pero como el API escogida no usa esos 
+datos, se usan las coordenadas que el \emph{dataset} incluye para cada 
+ciudad. 
+
+Al hacer peticiones, hay que tomar en cuenta varios casos. Si la petición 
+es exitosa, se manipulan los datos recibidos para devolver sólo lo 
+necesario. Si la petición tiene algún problema, se le avisa al usuario para 
+que vuelva a correr el programa. 
+
+Otra fase del problema es la impresión del clima. Para imprimir los datos, es 
+necesario un formato legible por cualquier persona. De ser posible, en 
+español.
+
+En conclusión, podemos observar tres etapas principales del problema: 
+el manejo, almacenamiento y acceso de los datos recibidos, el proceso de 
+realizar una petición a OpenWeatherMap y la impresión de la información 
+requerida.
+
 \section{Selección de la mejor alternativa}
 \section{Diagrama de flujo o pseudocódigo}
 \section{Pensamiento a futuro}
