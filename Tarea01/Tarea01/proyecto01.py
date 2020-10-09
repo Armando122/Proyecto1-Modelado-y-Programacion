@@ -35,7 +35,7 @@ def main():
 """
 Método peticiones.
 Recibe un diccionario con las ciudades de las cuales se quiere obtener el clima.
-Regresa un diccionario
+Regresa un diccionario cuyas llaves son las ciudades y están emparejadas con su clima.
 """
 def peticiones(diccionario):
 
