@@ -129,35 +129,45 @@ Imprime en la terminal el nombre de cada ciudad seguido de una ficha con la
 información del clima.
 """
 def impresion(dicionario):
-    #Ciclo para recorrer todas las ciudades del diccionario dado.
-    for ciudad in diccionario:
-        #Accede al clima de cada ciudad y la guarda en una variable para
-        #acceder a ella después.
-        clima = diccionario[ciudad]
-
-        #Se hace casting a todas las variables con un tipo de dato diferente
-        #a String.
-        temperatura = str(clima['main']['temp'])
-        sens_ter = str(clima['main']['feels_like'])
-        temp_min = str(clima['main']['temp_min'])
-        temp_max = str(clima['main']['temp_max'])
-        presion = str(clima['main']['pressure'])
-        humedad = str(clima['main']['pressure'])
-
-        #Ficha de impresión para cada clima. Se incluyen sólo los datos
-        #más generales y se agregan las unidades.
-        print( ciudad +
-               "\n Ciudad/Aeropuerto: " + clima['name'] + ", " + clima['sys']['country'] +
-               "\n Clima general: " + clima['weather'][0]['main'] +
-               "\n Descripción: " + clima['weather'][0]['description'] +
-               "\n Temperatura: " + temperatura + " ºC" +
-               "\n Sensación térmica: " + sens_ter + " ºC" +
-               "\n Temp. mínima: " + temp_min + " ºC" +
-               "\n Temp. máxima: " + temp_max + " ºC" +
-               "\n Presión: " + presion + " nPa" +
-               "\n Humedad: " + humedad + "%" +
-               "\n -------------------------------------"
-               )
+    #Primero se verifica que el diccionario no sea vacío
+    if not is_empty(diccionario):
+        #Ciclo para recorrer todas las ciudades del diccionario dado.
+        for ciudad in diccionario:
+            #Accede al clima de cada ciudad y la guarda en una variable para
+            #acceder a ella después.
+            clima = diccionario[ciudad]
+            #Se verifica que exista infirmación sobre el clima.
+            if not is_empty(clima):
+                #Se hace casting a todas las variables con un tipo de dato diferente
+                #a String.
+                temperatura = str(clima['main']['temp'])
+                sens_ter = str(clima['main']['feels_like'])
+                temp_min = str(clima['main']['temp_min'])
+                temp_max = str(clima['main']['temp_max'])
+                presion = str(clima['main']['pressure'])
+                humedad = str(clima['main']['pressure'])
+                #Ficha de impresión para cada clima. Se incluyen sólo los datos
+                #más generales y se agregan las unidades.
+                print( ciudad +
+                 "\n Ciudad/Aeropuerto: " + clima['name'] + ", " + clima['sys']['country'] +
+                 "\n Clima general: " + clima['weather'][0]['main'] +
+                 "\n Descripción: " + clima['weather'][0]['description'] +
+                 "\n Temperatura: " + temperatura + " ºC" +
+                 "\n Sensación térmica: " + sens_ter + " ºC" +
+                 "\n Temp. mínima: " + temp_min + " ºC" +
+                 "\n Temp. máxima: " + temp_max + " ºC" +
+                 "\n Presión: " + presion + " nPa" +
+                 "\n Humedad: " + humedad + "%" +
+                 "\n -------------------------------------"
+                 )
+            else:
+                #Si no hay información del clima, se le avisa al usuario y se
+                #continua con la siguiente ciudad.
+                print("No hay clima disponible para " + ciudad)
+                continue
+    else:
+        #Si el diccionario está vacío, se le avisa al usuario.
+        print("El diccionario está vacío")
 
 if __name__ == '__main__':
     main()
