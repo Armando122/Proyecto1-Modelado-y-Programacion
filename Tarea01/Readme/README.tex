@@ -45,7 +45,7 @@ llegada. Además, se nota que algunos tickes de \emph{dataset1} incluyen un
 origen diferente a la Ciudad de México, iguamente se tomaron esas ciudades 
 en cuenta para devolver el clima. Para los vuelos nacionales las ciudades están 
 en código IATA, pero como el API escogida no usa esos datos, se usan las 
-coordenadas que el \emph{dataset} incluye para cada ciudad. 
+coordenadas que el \emph{dataset1} incluye para cada ciudad. 
 
 Al hacer peticiones, hay que tomar en cuenta varios casos. Si la petición 
 es exitosa, se manipulan los datos recibidos para devolver sólo lo 
@@ -109,9 +109,34 @@ con el nombre de la ciudad, este diccionario servirá para la impresión de la
 información requerida.
 
 Como las peticiones regresan más información de la pedida, en el método
-\emph{impresión()} se filtra, y sólo son impresos los datos requeridos. 
+\emph{impresión()} se filtra, y sólo son impresos los datos requeridos. Como 
+no es necesaria la distición entre ciudad origen y destino, simplemente se 
+imprime el clima de toda ciudad que aparezca en los \emph{dataset}.
 
 \section{Diagrama de flujo o pseudocódigo}
+
+
 \section{Pensamiento a futuro}
+
+Algunas mejoras que se le pueden hacer al proyecto es traducir los códigos 
+IATA de los aeropuertos a su nombre de ciudad. Por otro lado, a los datos 
+impresos del clima se le puede agregar más información, como la zona 
+horaria, el porcentaje de nubes, la visibilidad y la velocidad del viento. Esta 
+mejora es sencilla y se puede hacer en poco tiempo, de acuerdo a lo que 
+decida el cliente.
+
+Usando varios hilos de ejecución se pueden hacer más peticiones en menos 
+tiempo y así el programa sería más veloz. También, al ser dos 
+programadores trabajando, se podría usar ambas llaves de acceso al API al 
+mismo tiempo.
+
+Con una membresía diferente de OpenWeatherMap, que tiene costo, se 
+podría tomar en cuenta el tiempo de vuelo y pedir predicciones del clima a la 
+hora de llegada del vuelo a la ciudad en cuestión.
+
+También se podría construir una interfaz de usuario que permita ingresar 
+el nombre de la ciudad y se imprima la información del clima uno a uno, o, 
+que se pueda elegir de qué ciudades se quiere ver la información, en lugar de 
+que se impriman todos al mismo tiempo.
 
 \end{document}
