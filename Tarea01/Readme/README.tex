@@ -2,8 +2,8 @@
 
 %opening
 \title{README}
-\author{Armando Ramírez González - 317158225 \\ Cecilia Villatoro Ramos - 
-419002938}
+\author{Armando Ramírez González - 317158225 \\ Cecilia Villatoro Ramos 
+- 419002938}
 
 \begin{document}
 
@@ -11,7 +11,16 @@
 
 \section{Definición del problema}
 
-Fuimos contratados por el aeropuerto de la Ciudad de México, para realizar un programa que devolviera el clima de las ciudades destino de 3 mil tickets diferentes. No es necesaria la interacción con el usuario, sólo la impresión de los climas.
+Fuimos contratados por el aeropuerto de la Ciudad de México, para realizar 
+un programa que devolviera el clima de las ciudades destino de 3 mil tickets 
+diferentes, fueron entregados en dos arcivos \emph{.csv}, uno de vuelos 
+nacionales, llamado \emph{dataset1} y uno de vuelos internacionales llamado 
+\emph{dataset2}. 
+
+No es necesaria la interacción con el usuario, sólo la impresión de los 
+sigiuentes datos del clima de cada ciudad: nombre de la ciudad o el 
+aeropuerto, la descripción general del clima, tempertatura, sensación términa, 
+temperaturas mínima y máxima, presión y humedad.
 
 \section{Análisis del problema}
 
@@ -30,12 +39,13 @@ destino. Por lo tanto, una opción es recolectar todas las ciudades
 diferentes que aparezcan en los tickets y emparejarlas con su clima, así 
 se evitan hacer dos llamadas para una misma ciudad.
 
-Al ver los \emph{dataset} recibidos, se nota que algunos tickes incluyen 
-un origen diferente a la Ciudad de México, iguamente se tomaron esas 
-ciudades en cuenta para devolver el clima. Para los vuelos nacionales las 
-ciudades están en código IATA, pero como el API escogida no usa esos 
-datos, se usan las coordenadas que el \emph{dataset} incluye para cada 
-ciudad. 
+Al ver los \emph{dataset} recibidos, se observan que \emph{dataset2} incluye 
+datos innecesarios para resolver el problema, como los horarios de salida y 
+llegada. Además, se nota que algunos tickes de \emph{dataset1} incluyen un 
+origen diferente a la Ciudad de México, iguamente se tomaron esas ciudades 
+en cuenta para devolver el clima. Para los vuelos nacionales las ciudades están 
+en código IATA, pero como el API escogida no usa esos datos, se usan las 
+coordenadas que el \emph{dataset} incluye para cada ciudad. 
 
 Al hacer peticiones, hay que tomar en cuenta varios casos. Si la petición 
 es exitosa, se manipulan los datos recibidos para devolver sólo lo 
@@ -52,6 +62,55 @@ realizar una petición a OpenWeatherMap y la impresión de la información
 requerida.
 
 \section{Selección de la mejor alternativa}
+
+Se escogió el lenguaje Python por su versatilidad, ya que al ser un lenguaje 
+multiparadigma se puede construir el proyecto con una estructura Orientada 
+a Objetos, también nos provee de herramientas sencillas y útiles para trabajar 
+con web services. Además incluye todas las esctructuras que fueron 
+necesarias para resolver el problema, como los diccionarios.
+
+Como ya fue mencionado antes, el nombre de las ciudades nacionales estaba 
+en código IATA, lo que no hace posible hacer una petición a OpenWeatherMap 
+con este dato, pero el \emph{dataset1} también contaba con las coordenadas 
+de cada ciudad, un dato con el que sí es posible hacer una petición. Por esta 
+razón era necesario guardar los dos datos para cada ciudad, para eso se 
+usaron diccionarios, donde la clave de búsqueda es el IATA de la ciudad y el 
+contenido es una lista de sus coordenadas.
+
+Los diccionarios son convenientes en este caso, porque si la ciudad se repite, 
+sólo se reescriben las coordenadas, pero sigue existiendo una única entrada 
+para cada ciudad.
+
+Las ciudades de \emph{dataset2} también se guardaron en un diccionario, 
+pero con entradas vacías porque este no contenía otros datos relevantes a 
+parte del nombre de las ciudades.
+
+En el código, la lectura de los archivos y la escritura en los diccionarios se 
+hizo con un sólo método \emph{lectura()} que distingue entre
+\emph{dataset1.csv} y \emph{dataset2.csv}.
+
+Para la etapa de las peticiones, se consideró que el API de OpenWeatherMap 
+es una herramienta que devuelve los datos necesarios para este problema, 
+además es de muy fácil acceso, gratuita y se maneja de manera sencila con 
+Python.
+
+Se realizó un método llamado \emph{peticiones()} que recibe un diccionario, 
+en este caso recibe la unión de los dos diccionarios creados con anterioridad 
+a partir de los \emph{dataset}. Con un ciclo \emph{for} realiza una petición 
+por entrada del diccionario, si la petición suelta un error por el nombre en 
+código IATA, hace otra petición con las coordenadas. Se verificó que en el 
+caso de las ciudades del  \emph{dataset2} no ocurriera ningún error por el 
+nombre de la ciudad. Se auxilia con un contador para no realizar más de 30 
+peticiones cada 30 segundos, así el programa espera 30 segundos en lugar 
+de un minuto y no satura de peticiones al API. Para esa espera, se utilizó la 
+librería \emph{waiters} de Python, ya que sirve para esta ocasión y es la que 
+se conocía. La información de cada petición se empareja en otro dicionario 
+con el nombre de la ciudad, este diccionario servirá para la impresión de la 
+información requerida.
+
+Como las peticiones regresan más información de la pedida, en el método
+\emph{impresión()} se filtra, y sólo son impresos los datos requeridos. 
+
 \section{Diagrama de flujo o pseudocódigo}
 \section{Pensamiento a futuro}
 
