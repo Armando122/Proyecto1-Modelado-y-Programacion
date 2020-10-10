@@ -133,10 +133,12 @@ def is_empty(data_structure):
 
 """
 Función para imprimir la lista de ciudades con su clima.
-Imprime en la terminal el nombre de cada ciudad seguido de una ficha con la
-información del clima.
+Imprime en la terminal el nombre de cada ciudad en orden alfabético
+seguido de una ficha con la información del clima.
 """
 def impresion(orden, datos):
+    #'orden' es una lista de las llaves del dicionario 'datos', pero ordenada
+    #alfabéticamente.
     diccionario = datos
     #Ciclo para recorrer todas las ciudades del diccionario dado.
     for ciudad in orden:
