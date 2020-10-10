@@ -19,15 +19,24 @@ llave_api = '56de92f593ea497ac17dd421c9fed113'
 url_base = 'http://api.openweathermap.org/data/2.5/weather?'
 
 def main():
+    #Ejecuta el código
     try:
+        #Primero lee el dataset1 y iata y lo transforma en diccionario
         diccionario_ciudades = lectura('resources/dataset1.csv')  #Lectura de csv1
-        diccionario_ciudades.update(lectura('resources/dataset2.csv')) #Lectura de csv2
+        diccionario_iatas = lectura('resources/iata.csv')
 
-        lista_de_paises = list(diccionario_ciudades.keys())
+        #Traduce el diccionario_ciudades, porque contiene ciudades en clave IATA
+        diccionario_traducido = traduccion_iatas(diccionario_iatas, diccionario_ciudades)
+        #Une este diccionario con el del dataset2
+        diccionario_traducido.update(lectura('resources/dataset2.csv')) #Lectura de csv2
+
+        #Genera la lista ordenada alfabéticamente
+        lista_de_paises = list(diccionario_traducido.keys())
         lista_ordenada = sorted(lista_de_paises)
 
-        climas = peticiones(diccionario_ciudades)
-
+        #Hace las peticiones
+        climas = peticiones(diccionario_traducido)
+        #Imprime las peticiones en ordel alfabético.
         impresion(lista_ordenada, climas)
 
     except FileNotFoundError as e:
@@ -107,6 +116,15 @@ def lectura(hoja):
                 diccionario[destino] = lista_d
             return diccionario
 
+    if hoja == 'resources/iata.csv':
+        with open(hoja, newline='') as csvFile: #Leemos el csv
+            reader = csv.DictReader(csvFile)
+            for row in reader:
+                iata = row['codigo_iata']
+                ciudad = row['ciudad']
+                diccionario[iata] = ciudad
+            return diccionario
+
     elif hoja == 'resources/dataset2.csv':
         with open(hoja, newline='') as csvFile:
             reader = csv.DictReader(csvFile)
@@ -119,6 +137,32 @@ def lectura(hoja):
     #Calusula en caso de que no se reciba el archivo correcto
     else:
         raise FileNotFoundError
+
+
+
+"""
+Función para traducir todo un diccionario con ciudades en código IATAS a
+forma alfabética.
+Devulve un diccionario con las llaves del nombre de la ciudad emparejadas con
+sus coordenadas.
+"""
+def traduccion_iatas(traductor, por_traducir):
+    #Diccionaro para guardar los mismos datos que el diccionario por traducir,
+    #pero con las claves de los nombres de las ciudades traducidas del código IATA
+    diccionario = {}
+
+    #Taduce cada llave de 'por_traducir' en su nombre de ciudad.
+    for nom_iata in por_traducir:
+        #Verifica que el diccionario 'por_traducir' tenga elemenos, no sólo
+        #llaves.
+        if not is_empty(por_traducir[nom_iata]):
+            #Guarda la traducción en una variable.
+            ciudad = traductor[nom_iata]
+            #La llave del nuevo diccionario es el nombre de la ciudad y
+            #su elemento es el mismo que el diccionario 'por_traducir'
+            diccionario[ciudad] = por_traducir[nom_iata]
+    #Regresa el nuevo diccionario con el nombre de las ciudades y sus coordenadas.
+    return diccionario
 
 """
 Función para determinar si una estructura de datos es vacía.
@@ -171,6 +215,7 @@ def impresion(orden, datos):
             print(ciudad, ': No se puede acceder a la información. \
                   \n\tCoordenadas incorrectas. \
                   \n -------------------------------------')
+
         else:
             print(ciudad, ': No se puede acceder a la información. \
                   \n\tLas ciudades no deben estar en clave IATA. \
