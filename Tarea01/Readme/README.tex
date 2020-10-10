@@ -2,14 +2,21 @@
 
 %opening
 \title{README}
-\author{Armando Ramírez González - 317158225 \\ Cecilia Villatoro Ramos - 419002938}
+\author{Armando Ramírez González - 317158225 \\ Cecilia Villatoro Ramos 
+- 419002938}
 
 \begin{document}
 
 \maketitle
 
 \section{Definición del problema}
-Fuimos contratados por el aeropuerto de la Ciudad de México, para realizar un programa que devolviera el clima de las ciudades destino de 3 mil tickets diferentes que salen el mismo día que se corre el algoritmo. No es necesaria la interacción con el usuario, sólo la impresión de los siguientes datos del clima de cada ciudad: nombre de la ciudad o el aeropuerto, la descripción general del clima, temperatura, sensación térmica, temperaturas mínima y máxima, presión y humedad.
+Fuimos contratados por el aeropuerto de la Ciudad de México, para realizar 
+un programa que devolviera el clima de las ciudades destino de 3 mil tickets 
+diferentes que salen el mismo día que se corre el algoritmo. No es necesaria 
+la interacción con el usuario, sólo la impresión de los siguientes datos del 
+clima de cada ciudad: nombre de la ciudad o el aeropuerto, la descripción 
+general del clima, temperatura, sensación térmica, temperaturas mínima y 
+máxima, presión y humedad.
 
 
 \section{Análisis del problema}
@@ -17,8 +24,11 @@ Para este problema los datos con que se cuentan son los siguientes:
 \begin{itemize}
 	\item \textbf{Datos de entrada:}
 	\begin{itemize}
-		\item Dataset1.csv que contiene las ciudades o países de origen y destino escritos en clave IATA correspondiente a la ISO 3166, además contiene las latitudes y longitudes del origen y del destino.		
-		\item Dataset2.csv que contiene el destino, hora de salida, hora de llegada y la fecha de salida.
+		\item Dataset1.csv que contiene las ciudades o países de origen y 
+		destino escritos en clave IATA correspondiente a la ISO 3166, además 
+		contiene las latitudes y longitudes del origen y del destino.		
+		\item Dataset2.csv que contiene el destino, hora de salida, hora de 
+		llegada y la fecha de salida.
 	\end{itemize}
 \end{itemize}
 
@@ -26,7 +36,9 @@ Y los datos que queremos que nos de el programa son:
 \begin{itemize}
 	\item \textbf{Datos de salida:}
 	\begin{itemize}
-		\item Informe del clima. Que contenga: nombre de la ciudad, descripción del clima, temperatura mínima, temperatura máxima y humedad humedad de la ciudad origen.
+		\item Informe del clima. Que contenga: nombre de la ciudad, 
+		descripción del clima, temperatura mínima, temperatura máxima y 
+		humedad humedad de la ciudad origen.
 	\end{itemize}
 \end{itemize}
 
@@ -49,9 +61,9 @@ Al ver los \emph{dataset} recibidos, se observan que \emph{dataset2} incluye
 datos innecesarios para resolver el problema, como los horarios de salida y 
 llegada. Además, se nota que algunos tickes de \emph{dataset1} incluyen un 
 origen diferente a la Ciudad de México, iguamente se tomaron esas ciudades 
-en cuenta para devolver el clima. Para los vuelos nacionales las ciudades están 
-en código IATA, pero como el API escogida no usa esos datos, se usan las 
-coordenadas que el \emph{dataset1} incluye para cada ciudad. 
+en cuenta para devolver el clima. Para los vuelos nacionales las ciudades 
+están en código IATA, pero como el API escogida no usa esos datos, se usan 
+las coordenadas que el \emph{dataset1} incluye para cada ciudad. 
 
 Al hacer peticiones, hay que tomar en cuenta varios casos. Si la petición 
 es exitosa, se manipulan los datos recibidos para devolver sólo lo 
@@ -70,17 +82,17 @@ requerida.
 \section{Selección de la mejor alternativa}
 Se escogió el lenguaje Python por su versatilidad, ya que al ser un lenguaje 
 multiparadigma se puede construir el proyecto con una estructura Orientada 
-a Objetos, también nos provee de herramientas sencillas y útiles para trabajar 
-con web services. Además incluye todas las esctructuras que fueron 
+a Objetos, también nos provee de herramientas sencillas y útiles para 
+trabajar con web services. Además incluye todas las esctructuras que fueron 
 necesarias para resolver el problema, como los diccionarios.
 
 Como ya fue mencionado antes, el nombre de las ciudades nacionales estaba 
-en código IATA, lo que no hace posible hacer una petición a OpenWeatherMap 
-con este dato, pero el \emph{dataset1} también contaba con las coordenadas 
-de cada ciudad, un dato con el que sí es posible hacer una petición. Por esta 
-razón era necesario guardar los dos datos para cada ciudad, para eso se 
-usaron diccionarios, donde la clave de búsqueda es el IATA de la ciudad y el 
-contenido es una lista de sus coordenadas.
+en código IATA, lo que no hace posible hacer una petición a 
+OpenWeatherMap con este dato, pero el \emph{dataset1} también contaba 
+con las coordenadas de cada ciudad, un dato con el que sí es posible hacer 
+una petición. Por esta razón era necesario guardar los dos datos para cada 
+ciudad, para eso se usaron diccionarios, donde la clave de búsqueda es el 
+IATA de la ciudad y el contenido es una lista de sus coordenadas.
 
 Los diccionarios son convenientes en este caso, porque si la ciudad se repite, 
 sólo se reescriben las coordenadas, pero sigue existiendo una única entrada 
@@ -124,8 +136,10 @@ imprime el clima de toda ciudad que aparezca en los \emph{dataset}.
 \indent \textbf{Leer} archivo csv.\\
 \indent\indent diccionario = \{\}\\
 \indent\indent \textbf{if} dataset1 existe\\
-\indent\indent\indent diccionario $ \leftarrow $ \{dataset1.ciudadOrigen : [ciudad.latitud, ciudad.longitud]\} \\
-\indent\indent\indent diccionario $ \leftarrow $ \{dataset1.ciudadDestino : [ciudad.latitud,ciudad.longitud]\}
+\indent\indent\indent diccionario $ \leftarrow $ \{dataset1.ciudadOrigen : 
+[ciudad.latitud, ciudad.longitud]\} \\
+\indent\indent\indent diccionario $ \leftarrow $ \{dataset1.ciudadDestino : 
+[ciudad.latitud,ciudad.longitud]\}
 \indent\indent \textbf{elif} dataset2 existe.\\
 \indent\indent\indent diccionario $ \leftarrow $ \{dataset2.destino : []\}\\
 \indent\indent \textbf{else:}\\
@@ -137,31 +151,36 @@ imprime el clima de toda ciudad que aparezca en los \emph{dataset}.
 \indent\indent\indent \textbf{if} $ i $ $ >= $ $ 30 $\\
 \indent\indent\indent\indent \textbf{Esperar} 30 segundos\\
 \indent\indent\indent\indent $ i $ $ = $ $ 0 $\\
-\indent\indent\indent \textbf{Hacer} petición $ \leftarrow $ petición a API con llave\\
+\indent\indent\indent \textbf{Hacer} petición $ \leftarrow $ petición a API 
+con llave\\
 \indent\indent\indent \textbf{if} petición $ == $ \textbf{True}\\
-\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : peticiónClave\}\\
+\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : 
+peticiónClave\}\\
 \indent\indent\indent\indent $ i $ $ += $ $ 1 $\\
 \indent\indent\indent \textbf{elif} petición $ == $ \textbf{False}\\
-\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : peticiónCoordenadas\}\\
+\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : 
+peticiónCoordenadas\}\\
 \indent\indent\indent\indent $ i $ $ += $ $ 1 $\\
 \indent\indent\indent \textbf{else}\\
-\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : error\}\\
+\indent\indent\indent\indent diccionarioNuevo $ \leftarrow $ \{llave : error\}
+\\
 \indent\indent\indent\indent $ i $ $ += $ $ 1 $\\
 \indent\textbf{Imprimir} diccionario\\
 \indent\indent \textbf{for} llave in diccionario\\
 \indent\indent\indent \textbf{if} diccionario[llave] $ != $ error\\
-\indent\indent\indent\indent \textbf{Print} diccionario[llave] + información de clima\\
+\indent\indent\indent\indent \textbf{Print} diccionario[llave] + información 
+de clima\\
 \indent\indent\indent \textbf{else}\\
 \indent\indent\indent\indent \textbf{Print} diccionario[llave] + error\\
 \textbf{Fin}
 
 \section{Pensamiento a futuro}
-Algunas mejoras que se le pueden hacer al proyecto es traducir los códigos 
-IATA de los aeropuertos a su nombre de ciudad. Por otro lado, a los datos 
-impresos del clima se le puede agregar más información, como la zona 
-horaria, el porcentaje de nubes, la visibilidad y la velocidad del viento. Esta 
-mejora es sencilla y se puede hacer en poco tiempo, de acuerdo a lo que 
-decida el cliente.
+Algunas mejoras que se le pueden hacer al proyecto es solucionar todos los 
+problemas que presenta, como que el API no encontró el idioma para algunas 
+ciudades. Por otro lado, a los datos impresos del clima se le puede agregar 
+más información, como la zona horaria, el porcentaje de nubes, la visibilidad 
+y la velocidad del viento. Esta mejora es sencilla y se puede hacer en poco 
+tiempo, de acuerdo a lo que decida el cliente.
 
 Usando varios hilos de ejecución se pueden hacer más peticiones en menos 
 tiempo y así el programa sería más veloz. También, al ser dos 
@@ -177,8 +196,15 @@ el nombre de la ciudad y se imprima la información del clima uno a uno, o,
 que se pueda elegir de qué ciudades se quiere ver la información, en lugar de 
 que se impriman todos al mismo tiempo.
 
-Por último están las actualizaciones a nuestro programa y mantenimiento que este pueda llegar a necesitar, ya sea por cambios en la API de OpenWeatherMap y como ésta es utilizada o futuras incompatibilidades que se puedan llegar a presentar en la ejecución con nuevas versiones del lenguaje.
+Por último están las actualizaciones a nuestro programa y mantenimiento 
+que este pueda llegar a necesitar, ya sea por cambios en la API de 
+OpenWeatherMap y como ésta es utilizada o futuras incompatibilidades que 
+se puedan llegar a presentar en la ejecución con nuevas versiones del 
+lenguaje.
 
-En relación al costo del código se propone la cantidad de $ 3500.00 $ pesos mexicanos y un costo extra para cada actualización o mantenimiento que llegue a necesitar el programa, según se determine con el cliente.
+En relación al costo del código se propone la cantidad de $ 3500.00 $ pesos 
+mexicanos y un costo extra para cada actualización, después de la primera o 
+mantenimiento que llegue a necesitar el programa, según se determine con 
+el cliente.
 
 \end{document}
