@@ -14,7 +14,7 @@ la temperatura mínima, la temperatura máxima y la humedad.
 """
 
 #Llave para usar OpenWeatherMap
-llave_api = {YOUR_API_KEY}
+llave_api = {YOUR_KEY}
 #URL raiz para hacer peticiones
 url_base = 'http://api.openweathermap.org/data/2.5/weather?'
 
@@ -23,9 +23,13 @@ def main():
         diccionario_ciudades = lectura('resources/dataset1.csv')  #Lectura de csv1
         diccionario_ciudades.update(lectura('resources/dataset2.csv')) #Lectura de csv2
 
+
+        lista_de_paises = list(diccionario_ciudades.keys())
+        lista_ordenada = sorted(lista_de_paises)
+
         climas = peticiones(diccionario_ciudades)
 
-        impresion(climas)
+        impresion(lista_ordenada, climas)
 
     except FileNotFoundError as e:
 
@@ -132,10 +136,10 @@ Función para imprimir la lista de ciudades con su clima.
 Imprime en la terminal el nombre de cada ciudad seguido de una ficha con la
 información del clima.
 """
-def impresion(datos):
+def impresion(orden, datos):
     diccionario = datos
     #Ciclo para recorrer todas las ciudades del diccionario dado.
-    for ciudad in diccionario:
+    for ciudad in orden:
         #Accede al clima de cada ciudad y la guarda en una variable para
         #acceder a ella después.
         clima = diccionario[ciudad]
@@ -168,6 +172,7 @@ def impresion(datos):
             print(ciudad, ': No se puede acceder a la información. \
                   \n\tCoordenadas incorrectas. \
                   \n -------------------------------------')
+
         else:
             print(ciudad, ': No se puede acceder a la información. \
                   \n\tLas ciudades no deben estar en clave IATA. \
