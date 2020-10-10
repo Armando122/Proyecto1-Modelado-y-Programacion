@@ -22,14 +22,10 @@ def main():
     try:
         diccionario_ciudades = lectura('resources/dataset1.csv')  #Lectura de csv1
         diccionario_ciudades.update(lectura('resources/dataset2.csv')) #Lectura de csv2
-
+        diccionario_iatas = lectura('resources/iata.csv')
 
         lista_de_paises = list(diccionario_ciudades.keys())
         lista_ordenada = sorted(lista_de_paises)
-
-        climas = peticiones(diccionario_ciudades)
-
-        impresion(lista_ordenada, climas)
 
     except FileNotFoundError as e:
 
@@ -107,6 +103,14 @@ def lectura(hoja):
                 diccionario[origen] = lista_o
                 diccionario[destino] = lista_d
             return diccionario
+    if hoja == 'resources/iata.csv':
+        with open(hoja, newline='') as csvFile: #Leemos el csv
+            reader = csv.DictReader(csvFile)
+            for row in reader:
+                iata = row['codigo_iata']
+                ciudad = row['ciudad']
+                diccionario[iata] = ciudad
+            return diccionario
 
     elif hoja == 'resources/dataset2.csv':
         with open(hoja, newline='') as csvFile:
@@ -133,12 +137,10 @@ def is_empty(data_structure):
 
 """
 Función para imprimir la lista de ciudades con su clima.
-Imprime en la terminal el nombre de cada ciudad en orden alfabético
-seguido de una ficha con la información del clima.
+Imprime en la terminal el nombre de cada ciudad seguido de una ficha con la
+información del clima.
 """
 def impresion(orden, datos):
-    #'orden' es una lista de las llaves del dicionario 'datos', pero ordenada
-    #alfabéticamente.
     diccionario = datos
     #Ciclo para recorrer todas las ciudades del diccionario dado.
     for ciudad in orden:
