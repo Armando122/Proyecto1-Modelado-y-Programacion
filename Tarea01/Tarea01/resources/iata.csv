@@ -58,7 +58,6 @@ ZMM,Zamora
 CVJ,Cuernavaca
 TNY,Tepic
 TPQ,Tepic
-—,Monterrey
 MTY,Monterrey
 NTR,Monterrey
 HUX,Huatulco
@@ -110,20 +109,20 @@ AMS,Amsterdam
 ATL,Atlanta
 BOG,Bogotá
 BZE,Belize
-CDG ,Paris
-CLT ,Charlotte
-DFW ,Dallas
-GUA ,Guatemala 
-HAV ,Havana
-IAH ,Huston
-JFK ,New York
-LAX ,Los Ángeles
-LIM ,Lima
-MAD ,Madrid
-MIA ,Miami
-ORD ,Chicago
-PHL ,Philadelphia
-PHX ,Phoenix
-SCL ,Santiago
-YVR ,Vancouver
-YYZ ,Toronto
+CDG,Paris
+CLT,Charlotte
+DFW,Dallas
+GUA,Guatemala 
+HAV,Havana
+IAH,Huston
+JFK,New York
+LAX,Los Ángeles
+LIM,Lima
+MAD,Madrid
+MIA,Miami
+ORD,Chicago
+PHL,Philadelphia
+PHX,Phoenix
+SCL,Santiago
+YVR,Vancouver
+YYZ,Toronto
