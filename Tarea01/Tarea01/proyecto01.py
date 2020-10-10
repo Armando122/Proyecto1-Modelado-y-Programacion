@@ -14,7 +14,7 @@ la temperatura mínima, la temperatura máxima y la humedad.
 """
 
 #Llave para usar OpenWeatherMap
-llave_api = '56de92f593ea497ac17dd421c9fed113'
+llave_api = {YOUR_API_KEY}
 #URL raiz para hacer peticiones
 url_base = 'http://api.openweathermap.org/data/2.5/weather?'
 
