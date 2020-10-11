@@ -10,7 +10,9 @@
 
 \section{Instrucciones de ejecución}
 Para la ejecución del proyecto es necesario contar con una llave exclusiva de OpenWeatherMap, el programa contiene una llave por defecto en caso de no haber llave se debe conseguir una registrándose en la página del web service.
-Las bibliotecas utilizadas fueron csv, json, requests y waiter sobre el lenguaje de programación Python en su versión $ 3.7.5 $ en caso de contar con ellas es necesario instalarlas mediante pip3, en caso de no tener pip3 es necesario instalarlo siguiendo las instrucciones correspondientes para cada sistema operativo.
+
+Las bibliotecas utilizadas fueron unittest (para la ejecución de las pruebas),csv, json, requests y waiter sobre el lenguaje de programación Python en su versión $ 3.7.5 $ en caso de contar con ellas es necesario instalarlas mediante pip3, en caso de no tener pip3 es necesario instalarlo siguiendo las instrucciones correspondientes para cada sistema operativo.
+
 La forma de ejecutar el proyecto y las pruebas son:
 \begin{center}
 	\textbf{Ejecución:} python3 proyecto1.py \\
@@ -77,7 +79,7 @@ español.
 En conclusión, podemos observar tres etapas principales del problema: 
 el manejo, almacenamiento y acceso de los datos recibidos, el proceso de 
 realizar una petición a OpenWeatherMap y la impresión de la información 
-requerida.
+requerida que se decidió que sería en orden alfabético.
 
 \section{Selección de la mejor alternativa}
 Se escogió el lenguaje Python por su versatilidad, ya que al ser un lenguaje 
@@ -192,5 +194,12 @@ que se impriman todos al mismo tiempo.
 Por último están las actualizaciones a nuestro programa y mantenimiento que este pueda llegar a necesitar, ya sea por cambios en la API de OpenWeatherMap y como ésta es utilizada o futuras incompatibilidades que se puedan llegar a presentar en la ejecución con nuevas versiones del lenguaje.
 
 En relación al costo del código se propone la cantidad de $ 3500.00 $ pesos mexicanos y un costo extra para cada actualización o mantenimiento que llegue a necesitar el programa, según se determine con el cliente.
+
+\section{Herramientas de trabajo}
+Para la realización de este proyecto se utilizaron las bibliotecas de Python: unittest (para la ejecución de las pruebas), csv (para la lectura de los archivos csv), json (para procesar las solicitudes al web service), requests (para hacer solicitudes al web service y recibir la información) y waiter (para limitar el número de peticiones al web servie y no saturarlo) cuya documentación necesaria para utilizarlas se encuentra en $ https://docs.python.org/es/3.7/ $.
+
+Para hacer las peticiones del clima se utilizó el web service de OpenWeatherMap cuya información de uso para obtener el clima del momento en que se corre el algoritmo se puede consultar en: $ https://openweathermap.org/current $, dentro de la documentación del web service se encontró que una forma de escribir el nombre del país es mediante la clave del país dada por la ISO 3166 o clave IATA (International Air Transport Association) propuesta por el organismo del mismo nombre, pero está clave no es válida para ciudades por lo que se buscó un código o base de datos que pudiese convertir el nombre de cada ciudad en clave IATA a su nombre común, tal código que se encontró y se utilizó fue el del repositorio de github de $ ckimrie $ cuya dirección es: $ https://gist.github.com/ckimrie/4755385 $ los datos ahí se procesaron y se colocaron en un archivo csv para poder utilizarlo con el programa.
+
+Finalmente se utilizaron dos datasets con la información necesaria sobre los vuelos para poder ejecutar el programa estos datasets fueron brindados por la ayudante de la materia de Modelado y Programación.
 
 \end{document}
