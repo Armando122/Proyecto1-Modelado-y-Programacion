@@ -8,6 +8,6 @@ Este repositorio contiene los proyectos realizados en la materia de Modelado y P
 
 * Para clonar el repositorio:
 
-'''https://github.com/Armando122/Proyecto1-Modelado-y-Programacion.git'''
+`https://github.com/Armando122/Proyecto1-Modelado-y-Programacion.git`
 
 
