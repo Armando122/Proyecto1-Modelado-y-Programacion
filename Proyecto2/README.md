@@ -20,7 +20,7 @@ Donde `Nubes 11773.jpeg` es la imagen y la etiqueta `s` le indica al programa si
 
 Se debe entregar en la salida estándar el índice de cobertura nubosa.
 
-Si además el programa recibió la etiqueta `s` se generará una imagen en formato jpg o png con las nubes en blanco y el cielo negro el nombre del archivo debe contener el nombre del archivo de entrada además con el sufijo `-seg`. Ejemplom si se recibe ek archivo `Nube 11773.jpeg` el programa devuelve el archivo `Nube 11773-seg.jpg` o `Nube 11773-seg.png`.
+Si además el programa recibió la etiqueta `s` se generará una imagen en formato jpg o png con las nubes en blanco y el cielo negro el nombre del archivo debe contener el nombre del archivo de entrada además con el sufijo `-seg`. Ejemplo si se recibe el archivo `Nube 11773.jpeg` el programa devuelve el archivo `Nube 11773-seg.jpg` o `Nube 11773-seg.png`.
 
 ## Bibliotecas utilizadas
 
