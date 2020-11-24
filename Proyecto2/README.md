@@ -14,7 +14,13 @@ java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpeg s
 java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpeg
 ```
 
-Donde `Nubes 11773.jpeg` es la imagen.
+Donde `Nubes 11773.jpeg` es la imagen y la etiqueta `s` le indica al programa si debe entregarse el archivo en blanco y negro con las nubes en blanco y el cielo negro.
+
+### Salida
+
+Se debe entregar en la salida estándar el índice de cobertura nubosa.
+
+Si además el programa recibió la etiqueta `s` se generará una imagen en formato jpg o png con las nubes en blanco y el cielo negro el nombre del archivo debe contener el nombre del archivo de entrada además con el sufijo `-seg`. Ejemplom si se recibe ek archivo `Nube 11773.jpeg` el programa devuelve el archivo `Nube 11773-seg.jpg` o `Nube 11773-seg.png`.
 
 ## Bibliotecas utilizadas
 
