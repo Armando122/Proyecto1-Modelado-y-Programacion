@@ -6,7 +6,7 @@ Este repositorio contiene los proyectos realizados en la materia de Modelado y P
 
 * **ProyectoDos:** Proyecto que recibe fotografías panorámicas en formato .jpg o .png de cielo nuboso y devuelve el índice de cobertura nubosa, en caso de que se especifique guarda la imagen segmentada.
 
-* Para clonar el repositorio:
+## Para clonar el repositorio:
 
 `https://github.com/Armando122/Proyecto1-Modelado-y-Programacion.git`
 
