@@ -14,6 +14,14 @@ import java.io.IOException;
  */
 public class Proyecto2 {
 
+    /* Imprime el uso del programa y lo termina. */
+    private static void uso() {
+      System.err.println("El archivo de entrada debe especificarse como:\n"
+                      + " java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2"
+                      + " imagen.jpeg\n");
+      System.exit(1);
+    }
+
     /*
      * Método para leer la imagen recibida.
      * Devuelve una copia de la imagen (BufferedImage).
@@ -26,7 +34,12 @@ public class Proyecto2 {
      */
     private static void guardarImagen() {}
 
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
+
+      // En caso de que no se reciba un archivo válido.
+      if (args.length <= 0 || args.length > 1) {
+        uso();
+      }
 
       /*
       1.try-catch de lectura de imagen.

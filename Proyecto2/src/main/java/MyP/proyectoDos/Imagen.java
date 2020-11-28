@@ -10,8 +10,10 @@ public class Imagen {
 
   /* Atributos de Imagen. */
   /* Colores para colorear los píxeles. */
-  private final Color blanco = new Color(255,255,255);
-  private final Color negro = new Color(0,0,0);
+  private final Color blanco = new Color(255, 255, 255);
+  private final Color negro = new Color(0, 0, 0);
+  int rgbBlanco = blanco.getRGB();
+  int rgbNegro = negro.getRGB();
 
   /* BufferedImage, copia de la imagen. */
   /* String, nombre de la imagen sin la extensión. */
