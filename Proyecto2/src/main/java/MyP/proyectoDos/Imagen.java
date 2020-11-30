@@ -24,7 +24,7 @@ public class Imagen {
 
   /* El área útil de la imagen recibida, donde el radio
   /* es 1324 pixeles de acuerdo con las especificaciones dadas*/
-  private final float areaUtil = (float) Math.PI * (float) Math.pow(1324,2);
+  private final float áreaÚtil = (float) Math.PI * (float) Math.pow(1324,2);
 
   /* BufferedImage, copia de la imagen. */
   private BufferedImage imagen;
@@ -74,8 +74,9 @@ public class Imagen {
    * Que se encarga de calcular el índice de cobertura nubosa
    * de la imagen.
    */
-  public void calculaIndice() {
+  public float calculaIndice() {
     //Calcula el indice y colorea la imagen.
+    return (áreaÚtil - (float) cielo.size()) / cielo.size();
   }
 
   /**
