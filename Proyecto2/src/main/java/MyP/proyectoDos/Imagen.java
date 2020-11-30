@@ -32,14 +32,42 @@ public class Imagen {
   private String nombre;
   /* Umbral para determinar si el píxel es de una nube o cielo. */
   private final double umbral = 0.95;
-  
+
 
   /**
    * Constructor para imagen.
    * @param BufferedImage imagen: imagen a analizar.
    * @param String nombre nombe de la imagen.
    */
-  public Imagen(BufferedImage imagen, String nombre) {}
+  public Imagen(BufferedImage imagen, String nombre) {
+    this.nombre = nombre;
+    this.imagen = imagen;
+  }
+
+  /**
+   * Método que clasifica los pixeles de la imagen y guarda 
+   * los que correspondan a cielo de acuerdo con el humbral. 
+   */
+  public void clasificaPixeles(){
+    for(int x = 834; x <= 3534; x++){
+      for(int y = 106; y <= 2806; y++){
+        int srgb = imagen.getRGB(x, y);
+
+        Color colorPixel = new Color(srgb);
+
+        float rojo = (float) colorPixel.getRed();
+        float azul = (float) colorPixel.getBlue();
+
+        int[] coordPixel = {x, y};
+
+        float razónRA = rojo / azul;
+
+        if(razónRA < umbral){
+          cielo.add(coordPixel);
+        }
+      }
+    }
+  }
 
   /**
    * Método calculaIndice.
