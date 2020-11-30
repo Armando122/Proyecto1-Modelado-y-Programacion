@@ -2,6 +2,10 @@ package MyP.proyectoDos;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Clase Imagen
@@ -12,14 +16,23 @@ public class Imagen {
   /* Colores para colorear los píxeles. */
   private final Color blanco = new Color(255, 255, 255);
   private final Color negro = new Color(0, 0, 0);
-  int rgbBlanco = blanco.getRGB();
-  int rgbNegro = negro.getRGB();
+  private int rgbBlanco = blanco.getRGB();
+  private int rgbNegro = negro.getRGB();
+
+  /* El conjunto de coordenadas de los pixeles que son cielo*/
+  private ArrayList<int[]> cielo;
+
+  /* El área útil de la imagen recibida, donde el radio
+  /* es 1324 pixeles de acuerdo con las especificaciones dadas*/
+  private final float areaUtil = (float) Math.PI * (float) Math.pow(1324,2);
 
   /* BufferedImage, copia de la imagen. */
+  private BufferedImage imagen;
   /* String, nombre de la imagen sin la extensión. */
+  private String nombre;
   /* Umbral para determinar si el píxel es de una nube o cielo. */
   private final double umbral = 0.95;
-
+  
 
   /**
    * Constructor para imagen.
