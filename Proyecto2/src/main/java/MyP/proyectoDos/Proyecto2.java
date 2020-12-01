@@ -22,34 +22,76 @@ public class Proyecto2 {
       System.exit(1);
     }
 
-    /*
-     * Método para leer la imagen recibida.
-     * Devuelve una copia de la imagen (BufferedImage).
-     * Arroja IOException si no se encuentra la imagen.
-     */
-    private static BufferedImage leer(String nombre) throws IOException {}
-
-    /**
-     * Método para escribir la nueva imagen.
-     */
-    private static void guardarImagen() {}
+    /* Imprime el uso del programa y lo termina. */
+    private static void usoSeg() {
+      System.err.println("Etiqueta 's' no encontrada.\n");
+      System.exit(1);
+    }
 
     public static void main(String[] args) {
 
-      // En caso de que no se reciba un archivo válido.
+      /* Objeto imagen para calcular el CCI. */
+      Imagen nubes = null;
+      /* Imagen leída. */
+      BufferedImage imagen = null;
+      /* Nombre de la imagen sin ruta ni extensión. */
+      String nombreIm = "";
+
+      /* En caso de que no se reciba un archivo válido. */
       if (args.length <= 0 || args.length > 1) {
         uso();
       }
 
-      /*
-      1.try-catch de lectura de imagen.
-      2.imagen = Llamar al método leer
-      2.Construir un objeto de Imagen con imagen como parametro y nombre
-      de imagen.
-      3. Devovler el CCI.
-      4.Revisar si está la etiqueta S o s y guardar la imagen si es así.
-      5.Lanzar una excepción si la etiqueta es incorrecta.
-      */
+      /* Segundo parametro invalido. */
+      if (args.length == 2) {
+        if (!args[1].equals("S") || !args[1].equals("s")) {
+          usoSeg();
+        }
+      }
+
+      /* Quitamos la ruta a la imagen recibida. */
+      for (int i = 0; i<args[0].length(); i++) {
+        char m = args[0].charAt(i);
+        String diagonal = "/";
+        if (m == diagonal.charAt(0)) {
+          nombreIm = args[0].substring(i+1);
+        }
+      }
+      /* Quitamos la extensión de la imagen. */
+      for (int j = 0; j<args[0].length(); j++) {
+        char m = args[0].charAt(j);
+        String punto = ".";
+        if (m == punto.charAt(0)) {
+          nombreIm = args[0].substring(0,j);
+        }
+      }
+
+      /* Se recibe un archivo válido y se lee. */
+      try {
+        // Leer imagen
+        imagen = new ImageIO.read(new File(args[0]));
+
+        //Construir objeto imagen
+        nubes = new Imagen(imagen, nombreIm);
+        nubes.clasificaPixeles();
+
+        //Imprmimir cci
+        float indiceF = nubes.calculaIndice();
+        String indice = indiceF.toString();
+        System.out.println(indice);
+
+        if (args.length == 2) {
+          // Se colorea la imagen. FALTA
+          //Guardar imagen segmentada.
+          BufferedImage imagenSeg = nubes.obtenerImagenBN();
+          String nombreCompleto = nubes.obtenerNombre() + "-seg.png";
+          File imgSalida = new File(nombreCompleto);
+          ImageIO.write(imagenSeg, "png", imgSalida)
+        }
+      } catch(IOException e) {
+        System.err.println("La imagen: " + e.getMessage()
+                          + " no se encontró en la dirección especificada");
+      }
 
     }
 }

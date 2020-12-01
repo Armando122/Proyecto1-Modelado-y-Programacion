@@ -15,11 +15,15 @@ import java.io.IOException;
 public class TestProyecto {
 
     /**/
+    private BufferedImage plantilla;
+    private String nombre = "11833"
 
     /**
      * Crea una imagen para las pruebas.
      */
-    public TestProyecto() {}
+    public TestProyecto() {
+        plantilla = imageIO.read(new File("CloudCoverageImgs/11833.JPG"));
+    }
 
     /**
      * Prueba unitaria para el cosntructor de Imagen.
@@ -37,6 +41,8 @@ public class TestProyecto {
      * Prueba unitaria para el método obtenerNombre de Imagen.
      */
     @Test public void testObtenerNombre() {
+      
+      Assert.assertTrue();
     }
 
     /**
