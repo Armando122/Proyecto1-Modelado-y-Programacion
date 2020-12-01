@@ -2,29 +2,39 @@
 
 Programa en java (Java 14) que recibe una imagen en formato .jpeg y devuelve el índice de cobertura nubosa de la imagen (CCI).
 
+### Autores
+
+Este proyecto fue realizado por
+
 ### Entrada
 
-La entrada del programa es el nombre de una imagen en formato jpeg de 4,368 píxeles de ancho y 2,912 píxeles de alto. La imagen del cielo se encuentra en un círculo de centro (2184,1456) y de radio aproximado de 1324 píxeles contenida en el rectángulo de cada imagen.
+La entrada del programa es el nombre de una imagen en formato `.jpg` de 4,368 píxeles de ancho y 2,912 píxeles de alto. La imagen del cielo se encuentra en un círculo de centro (2184,1456) y de radio aproximado de 1324 píxeles contenida en el rectángulo de cada imagen.
 
 El programa recibe en la entrada estándar los archivos de imagen. Las siguientes entradas son válidas para el programa:
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpeg S
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpeg s
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpeg
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg S
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg s
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg
 ```
 
-Donde `Nubes 11773.jpeg` es la imagen y la etiqueta `s` le indica al programa si debe entregarse el archivo en blanco y negro con las nubes en blanco y el cielo negro.
+Donde `Nubes 11773.jpg` es la imagen y la etiqueta `s` le indica al programa si debe entregarse el archivo en blanco y negro con las nubes en blanco y el cielo negro.
 
 ### Salida
 
 Se debe entregar en la salida estándar el índice de cobertura nubosa.
 
-Si además el programa recibió la etiqueta `s` se generará una imagen en formato jpg o png con las nubes en blanco y el cielo negro el nombre del archivo debe contener el nombre del archivo de entrada además con el sufijo `-seg`. Ejemplo si se recibe el archivo `Nube 11773.jpeg` el programa devuelve el archivo `Nube 11773-seg.jpg` o `Nube 11773-seg.png`.
+Si además el programa recibió la etiqueta `s` se generará una imagen en formato jpg o png con las nubes en blanco y el cielo negro el nombre del archivo debe contener el nombre del archivo de entrada además con el sufijo `-seg`. Ejemplo si se recibe el archivo `Nube 11773.jpg` el programa devuelve el archivo `Nube 11773-seg.jpg` o `Nube 11773-seg.png`.
 
 ## Bibliotecas utilizadas
 
 Se usaron las bibliotecas de Java:
+
+* [BufferedImage](https://docs.oracle.com/javase/7/docs/api/java/awt/image/BufferedImage.html).
+* [File](https://docs.oracle.com/javase/7/docs/api/java/io/File.html).
+* [ImageIO](https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html).
+* [Color](https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html).
+* [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html).
 
 ## Para compilar y correr el código
 
@@ -43,7 +53,19 @@ mvn install
 Una vez instalado para ejecutar el código debe escribirse:
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg
+```
+
+o si se quiere obtener la imagen segmentada debe escribirse:
+
+```
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg S
+```
+
+o
+
+```
+java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg s
 ```
 
 ## Para correr las pruebas
@@ -61,6 +83,10 @@ mvn test
 ```
 
 Lo que ejecutará las pruebas del código.
+
+## Enlace del repositorio
+
+https://github.com/Armando122/Proyectos-Modelado-y-Programacion/tree/master/Proyecto2.
 
 
 
