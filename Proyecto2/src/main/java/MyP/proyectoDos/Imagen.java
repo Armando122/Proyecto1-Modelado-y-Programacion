@@ -92,4 +92,26 @@ public class Imagen {
     //Calcula el indice y colorea la imagen.
     return (áreaÚtil - (float) cielo.size()) / áreaÚtil;
   }
+
+  /**
+   * Método dibujaCielo.
+   * Se encarga de sobreescribir la plantilla con los pixeles que 
+   * corresponden al cielo de la Imagen y regresa el BufferImage 
+   * para que se use en el Main de Proyecto2.
+   */
+
+  public BufferedImage dibujaCielo() throws IOException{
+    //Necesarios para acceder a la plantilla
+    File plantilla = new File("resourses/plantilla.png");
+    BufferedImage bufferPlantilla = ImageIO.read(plantilla);
+
+    //Colorea los pixeles de negro
+    for(int i = 0; i < cielo.size(); i++){
+      int[] pixel = cielo.get(i);
+      //Se escriben los pixeles negros sobre la plantilla, pero sin
+      // cambiar la imagen original.
+      bufferPlantilla.setRGB(pixel[0], pixel[1], rgbNegro);
+    }
+    return bufferPlantilla;
+  }
 }
