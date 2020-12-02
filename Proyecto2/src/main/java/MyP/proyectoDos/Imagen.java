@@ -45,6 +45,22 @@ public class Imagen {
   }
 
   /**
+   * Método obtenerNombre. Devuelve el nombre de la imagen.
+   * @return String nombre de imagen.
+   */
+  public String obtenerNombre() {
+    return this.nombre;
+  }
+
+  /**
+   * Método obtenerImagenBN. Devuelve la imagen en blanco y negro.
+   * @return BufferedImage imagenBN imagen en blanco y negro.
+   */
+  public BufferedImage obtenerImagenBN() {
+    return this.imagen;
+  }
+
+  /**
    * Método que clasifica los pixeles de la imagen y guarda 
    * los que correspondan a cielo de acuerdo con el humbral. 
    */
@@ -76,23 +92,7 @@ public class Imagen {
    */
   public float calculaIndice() {
     //Calcula el indice y colorea la imagen.
-    return (áreaÚtil - (float) cielo.size()) / cielo.size();
-  }
-
-  /**
-   * Método obtenerNombre. Devuelve el nombre de la imagen.
-   * @return String nombre de imagen.
-   */
-  public String obtenerNombre() {
-    return this.nombre;
-  }
-
-  /**
-   * Método obtenerImagenBN. Devuelve la imagen en blanco y negro.
-   * @return BufferedImage imagenBN imagen en blanco y negro.
-   */
-  public BufferedImage obtenerImagenBN() {
-    return this.imagen;
+    return (áreaÚtil - (float) cielo.size()) / áreaÚtil;
   }
 
 }
