@@ -14,9 +14,7 @@ public class Imagen {
 
   /* Atributos de Imagen. */
   /* Colores para colorear los píxeles. */
-  private final Color blanco = new Color(255, 255, 255);
-  private final Color negro = new Color(0, 0, 0);
-  private int rgbBlanco = blanco.getRGB();
+  private final Color negro = new Color(1, 1, 1);
   private int rgbNegro = negro.getRGB();
 
   /* El conjunto de coordenadas de los pixeles que son cielo*/
@@ -93,30 +91,5 @@ public class Imagen {
   public float calculaIndice() {
     //Calcula el indice y colorea la imagen.
     return (áreaÚtil - (float) cielo.size()) / áreaÚtil;
-  }
-
-  /**
-   * Método dibujaCielo.
-   * Se encarga de sobreescribir la plantilla con los pixeles que 
-   * corresponden al cielo de la Imagen.
-   */
-
-  public void dibujaCielo() throws IOException{
-    //Necesarios para acceder a la plantilla
-    File plantilla = new File("Inserte dirección de la plantilla");
-    BufferedImage bufferPlantilla = ImageIO.read(plantilla);
-
-    //Necesarios para la escritura de la plantilla
-    File segmentación = new File(nombre + "-seg.png");
-    Color negro = new Color(1,1,1);
-
-    for(int i = 0; i < cielo.size(); i++){
-      int[] pixel = cielo.get(i);
-      //Se escriben los pixeles negros sobre la plantilla, pero sin
-      // cambiar la imagen original.
-      bufferPlantilla.setRGB(pixel[0], pixel[1], negro.getRGB());
-    }
-    //Se escriben lis píxeles en el archivo de segmentación.
-    ImageIO.write(bufferPlantilla, "png", segmentación);
   }
 }
