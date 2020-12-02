@@ -69,7 +69,7 @@ public class Proyecto2 {
       /* Se recibe un archivo válido y se lee. */
       try {
         // Leer imagen
-        imagen = new ImageIO.read(new File(args[0]));
+        imagen = ImageIO.read(new File(args[0]));
 
         //Construir objeto imagen
         nubes = new Imagen(imagen, nombreIm);
@@ -77,7 +77,7 @@ public class Proyecto2 {
 
         //Imprmimir cci
         float indiceF = nubes.calculaIndice();
-        String indice = indiceF.toString();
+        String indice = String.valueOf(indiceF);
         System.out.println(indice);
 
         if (args.length == 2) {
@@ -86,7 +86,7 @@ public class Proyecto2 {
           BufferedImage imagenSeg = nubes.obtenerImagenBN();
           String nombreCompleto = nubes.obtenerNombre() + "-seg.png";
           File imgSalida = new File(nombreCompleto);
-          ImageIO.write(imagenSeg, "png", imgSalida)
+          ImageIO.write(imagenSeg, "png", imgSalida);
         }
       } catch(IOException e) {
         System.err.println("La imagen: " + e.getMessage()
