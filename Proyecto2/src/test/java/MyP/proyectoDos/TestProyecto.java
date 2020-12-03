@@ -15,40 +15,40 @@ import java.io.IOException;
 public class TestProyecto {
 
     /**/
-    private BufferedImage plantilla;
-    private String nombre = "11833"
+    private BufferedImage plantilla = null;
+    private String nombre = "CloudCoverageImgs/prueba.jpg";
+    private Imagen imgP = null;
 
     /**
      * Crea una imagen para las pruebas.
      */
-    public TestProyecto() {
-        plantilla = imageIO.read(new File("CloudCoverageImgs/11833.JPG"));
+    public TestProyecto() throws IOException {
+        plantilla = ImageIO.read(new File("CloudCoverageImgs/prueba.jpg"));
+        imgP = new Imagen(plantilla, nombre);
     }
 
     /**
      * Prueba unitaria para el cosntructor de Imagen.
      */
     @Test public void testConstructor() {
+      Assert.assertTrue(imgP != null);
     }
 
     /**
      * Prueba unitaria para el método calculaIndice de Imagen.
      */
     @Test public void testCalculaIndice() {
+      imgP.clasificaPixeles();
+      float indice = imgP.calculaIndice();
+      Assert.assertTrue(indice == 1.0);
     }
 
     /**
      * Prueba unitaria para el método obtenerNombre de Imagen.
      */
     @Test public void testObtenerNombre() {
-      
-      Assert.assertTrue();
-    }
-
-    /**
-     * Prueba unitaria para el método obtenerImagenBN de Imagen.
-     */
-    @Test public void testObtenerImagenBN() {
+      String nomPrueba = imgP.obtenerNombre();
+      Assert.assertTrue(nomPrueba.equals(nombre));
     }
 
 }

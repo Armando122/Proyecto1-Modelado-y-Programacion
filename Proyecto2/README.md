@@ -4,7 +4,11 @@ Programa en java (Java 14) que recibe una imagen en formato .jpeg y devuelve el 
 
 ### Autores
 
-Este proyecto fue realizado por
+Este proyecto fue realizado por:
+
+* Armando Ramírez González.
+
+* Cecilia Villatoro Ramos.
 
 ### Entrada
 

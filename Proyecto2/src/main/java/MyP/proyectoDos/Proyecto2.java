@@ -38,31 +38,33 @@ public class Proyecto2 {
       String nombreIm = "";
 
       /* En caso de que no se reciba un archivo válido. */
-      if (args.length <= 0 || args.length > 1) {
+      if (args.length <= 0 || args.length > 2) {
         uso();
       }
 
       /* Segundo parametro invalido. */
       if (args.length == 2) {
-        if (!args[1].equals("S") || !args[1].equals("s")) {
+        String param = args[1].toLowerCase();
+        if (!param.equals("s")) {
           usoSeg();
         }
       }
 
-      /* Quitamos la ruta a la imagen recibida. */
-      for (int i = 0; i<args[0].length(); i++) {
-        char m = args[0].charAt(i);
-        String diagonal = "/";
-        if (m == diagonal.charAt(0)) {
-          nombreIm = args[0].substring(i+1);
-        }
-      }
       /* Quitamos la extensión de la imagen. */
       for (int j = 0; j<args[0].length(); j++) {
         char m = args[0].charAt(j);
         String punto = ".";
         if (m == punto.charAt(0)) {
           nombreIm = args[0].substring(0,j);
+        }
+      }
+      String parteMedia = nombreIm;
+      /* Quitamos la ruta a la imagen recibida. */
+      for (int i = 0; i<parteMedia.length(); i++) {
+        char m = parteMedia.charAt(i);
+        String diagonal = "/";
+        if (m == diagonal.charAt(0)) {
+          nombreIm = parteMedia.substring(i+1);
         }
       }
 
@@ -81,16 +83,14 @@ public class Proyecto2 {
         System.out.println(indice);
 
         if (args.length == 2) {
-          // Se colorea la imagen. FALTA
           //Guardar imagen segmentada.
-          BufferedImage imagenSeg = nubes.obtenerImagenBN();
+          BufferedImage imagenSeg = nubes.dibujaCielo(); 
           String nombreCompleto = nubes.obtenerNombre() + "-seg.png";
           File imgSalida = new File(nombreCompleto);
           ImageIO.write(imagenSeg, "png", imgSalida);
         }
       } catch(IOException e) {
-        System.err.println("La imagen: " + e.getMessage()
-                          + " no se encontró en la dirección especificada");
+        System.err.println(e.getMessage());
       }
 
     }

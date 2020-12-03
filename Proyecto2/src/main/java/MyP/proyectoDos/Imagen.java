@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Clase Imagen
+ * Clase Imagen.
+ * @author Cecilia Villatoro Ramos.
+ * @author Armando ramírez González.
  */
 public class Imagen {
 
@@ -18,7 +20,7 @@ public class Imagen {
   private int rgbNegro = negro.getRGB();
 
   /* El conjunto de coordenadas de los pixeles que son cielo*/
-  private ArrayList<int[]> cielo;
+  private ArrayList<int[]> cielo = new ArrayList();
 
   /* El área útil de la imagen recibida, donde el radio
   /* es 1324 pixeles de acuerdo con las especificaciones dadas*/
@@ -51,21 +53,13 @@ public class Imagen {
   }
 
   /**
-   * Método obtenerImagenBN. Devuelve la imagen en blanco y negro.
-   * @return BufferedImage imagenBN imagen en blanco y negro.
-   */
-  public BufferedImage obtenerImagenBN() {
-    return this.imagen;
-  }
-
-  /**
-   * Método que clasifica los pixeles de la imagen y guarda 
-   * los que correspondan a cielo de acuerdo con el humbral. 
+   * Método que clasifica los pixeles de la imagen y guarda
+   * los que correspondan a cielo de acuerdo con el humbral.
    */
   public void clasificaPixeles(){
     for(int x = 834; x <= 3534; x++){
       for(int y = 106; y <= 2806; y++){
-        int srgb = imagen.getRGB(x, y);
+        int srgb = this.imagen.getRGB(x, y);
 
         Color colorPixel = new Color(srgb);
 
@@ -95,14 +89,14 @@ public class Imagen {
 
   /**
    * Método dibujaCielo.
-   * Se encarga de sobreescribir la plantilla con los pixeles que 
-   * corresponden al cielo de la Imagen y regresa el BufferImage 
-   * para que se use en el Main de Proyecto2.
+   * Se encarga de sobreescribir una copia de la plantilla con los pixeles que
+   * corresponden al cielo de la Imagen.
+   * @return BufferImage imagen en blanco y negro del cielo.
    */
 
   public BufferedImage dibujaCielo() throws IOException{
     //Necesarios para acceder a la plantilla
-    File plantilla = new File("resourses/plantilla.png");
+    File plantilla = new File("src/main/resources/plantilla.png");
     BufferedImage bufferPlantilla = ImageIO.read(plantilla);
 
     //Colorea los pixeles de negro
