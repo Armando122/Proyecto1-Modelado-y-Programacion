@@ -57,8 +57,11 @@ public class Imagen {
    * los que correspondan a cielo de acuerdo con el humbral.
    */
   public void clasificaPixeles(){
-    for(int x = 834; x <= 3534; x++){
-      for(int y = 106; y <= 2806; y++){
+    for(int x = 834; x < 3534; x++){
+
+      int nuevaX = x - 834;
+
+      for(int y = 106; y < 2806; y++){
         int srgb = this.imagen.getRGB(x, y);
 
         Color colorPixel = new Color(srgb);
@@ -66,7 +69,9 @@ public class Imagen {
         float rojo = (float) colorPixel.getRed();
         float azul = (float) colorPixel.getBlue();
 
-        int[] coordPixel = {x, y};
+        int nuevaY = y - 106;
+
+        int[] coordPixel = {nuevaX, nuevaY};
 
         float razónRA = rojo / azul;
 
@@ -81,6 +86,7 @@ public class Imagen {
    * Método calculaIndice.
    * Que se encarga de calcular el índice de cobertura nubosa
    * de la imagen.
+   * @return float El índice de cobertura nubosa.
    */
   public float calculaIndice() {
     //Calcula el indice y colorea la imagen.
@@ -102,8 +108,8 @@ public class Imagen {
     //Colorea los pixeles de negro
     for(int i = 0; i < cielo.size(); i++){
       int[] pixel = cielo.get(i);
-      //Se escriben los pixeles negros sobre la plantilla, pero sin
-      // cambiar la imagen original.
+      /*Se escriben los pixeles negros sobre la plantilla, pero sin
+       cambiar la imagen original.*/
       bufferPlantilla.setRGB(pixel[0], pixel[1], rgbNegro);
     }
     return bufferPlantilla;

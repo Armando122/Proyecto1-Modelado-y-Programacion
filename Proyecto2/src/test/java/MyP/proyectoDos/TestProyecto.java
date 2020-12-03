@@ -10,11 +10,11 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 /**
- * Pruebas unitarias de Imagen y Proyecto2
+ * Pruebas unitarias del proyecto.
  */
 public class TestProyecto {
 
-    /**/
+    /* Plantilla base para las pruebas. */
     private BufferedImage plantilla = null;
     private String nombre = "CloudCoverageImgs/prueba.jpg";
     private Imagen imgP = null;

@@ -6,11 +6,12 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 /**
- * Proyecto2 que recibe una imagen en formato .jpeg y devuvelve el indice
+ * Proyecto2 que recibe una imagen en formato .jpg y devuvelve el indice
  * de cobertura nubosa en la salida estándar. Regresa también la imagen
  * segmentada con las nubes en blanco y el cielo negro, si se recibe
  * la etiqueta s.
- *
+ * @author Armando ramírez González.
+ * @author Cecilia Villatoro Ramos.
  */
 public class Proyecto2 {
 
@@ -84,7 +85,7 @@ public class Proyecto2 {
 
         if (args.length == 2) {
           //Guardar imagen segmentada.
-          BufferedImage imagenSeg = nubes.dibujaCielo(); 
+          BufferedImage imagenSeg = nubes.dibujaCielo();
           String nombreCompleto = nubes.obtenerNombre() + "-seg.png";
           File imgSalida = new File(nombreCompleto);
           ImageIO.write(imagenSeg, "png", imgSalida);
