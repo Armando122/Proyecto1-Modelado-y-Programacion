@@ -1,13 +1,17 @@
 package com.MyP.proyecto;
 
 /**
- * Hello world!
- *
+ * Implementación del secreto compartido de Shamir.
+ * Que cifra un archivo mediante una contraseña de usuario y
+ * lo descifra con t contraseñas independientes.
+ * @version 1.0
+ * @author Armando ramírez González.
+ * @author Cecilia Villatoro Ramos.
  */
 public class EsquemaShamir
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        //Ejecución de código.
     }
 }
