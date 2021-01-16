@@ -1,6 +1,8 @@
 # Esquema de Secreto Compartido de Shamir
 
+Programa que implementa el esquema de Shamir para compartir la clave necesaria para descifrar un archivo que suponemos contiene información confidencial. Está información puede ser accedida siempre que estén presentes al menos u, de los n miembros de un grupo de personas con autorización para acceder a ella.
 
+A partir de un archivo, se genera una versión confidencial de él. Mediante el mecanismo AES (Advenced Encryption Standar). El documento original es cifrado por una contraseña que porporciona el usuario. A partir de esa contraseña se genera la clave de cifrado K, con la que se cifra el documento. Además el programa devuelve el documento cifrado y las n evaluaciones del polinomio. Si se logran reunir al menos t <= n de esas personas, el programa puede descifrar el documento cifrado.
 
 ### Autores
 
@@ -12,9 +14,43 @@ Proyecto realizado por:
 
 ### Entrada
 
+El programa tiene dos modalidades de entrada, una para cifrar y otra para descifrar
+
+### Cifrar
+
+En la línea de comandos se debe proporcionar:
+* La opción c.
+
+* El nombre de archivo donde se guardarán las n evaluaciones del polinomio.
+
+* El número total de evaluaciones requeridas(n > 2).
+
+* El número mínimo de puntos necesarios para descifrar(1 < t <= n).
+
+* El nombre del archivo del documento original.
+
+Ejemplo:
 
 ```
-java -jar target/EsquemaShamir.jar
+java -jar target/EsquemaShamir.jar c evaluaciones.txt 15 10 archivo.txt
+```
+
+Durante la ejecución de esta opción se le solicitará al usuario una contraseña (Sin hacer eco en la terminal).
+
+### Descifrar
+
+En la línea de comando debe proporcionarse:
+
+* La opción d.
+
+* EL nombre de archivo con, al menos, t de las n evaluaciones del polinomio.
+
+* El nombre del archivo cifrado.
+
+Ejemplo:
+
+```
+java -jar target/EsquemaShamir.jar d evaluaciones.txt archivoCifrado.txt
 ```
 
 ### Salida
@@ -64,8 +100,16 @@ Lo que ejecutará las pruebas del código.
 
 ## Enlace del repositorio
 
+https://github.com/Armando122/Proyectos-Modelado-y-Programacion/tree/master/esquema_shamir
 
 ## Documentación
+
+Para generar la documentación debe escribirse:
+
+```
+mvn site
+```
+
 
 
 
