@@ -1,5 +1,7 @@
 package com.MyP.proyecto;
 
+import java.lang.IllegalArgumentException;
+
 /**
  * Clase Descifrado.
  * Se encarga de descifrar un archivo dadas t entradas
@@ -8,4 +10,21 @@ package com.MyP.proyecto;
  * @author Armando ramírez González.
  * @author Cecilia Villatoro Ramos.
  */
-public class Descifrado {}
+public class Descifrado {
+
+  /* Constructor privado para evitar instanciación. */
+  private Descrifrado() {}
+
+  /**
+   * Método descrifra que desencripta la línea de texto recibida.
+   * @param llave Clave segura para desencriptar.
+   * @param linea Texto a desencriptar.
+   * @return Texto desencriptado.
+   * @throws IllegalArgumentException si la llave no es de 256 bits.
+   */
+  public String descifra(String llave, String linea)
+   throws IllegalArgumentException {
+    s
+  }
+
+}

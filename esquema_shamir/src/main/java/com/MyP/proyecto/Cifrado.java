@@ -1,5 +1,7 @@
 package com.MyP.proyecto;
 
+import java.lang.IllegalArgumentException;
+
 /**
  * Clase Cifrado.
  * Se encarga de cifrar un archivo dada una constraseña segura
@@ -9,4 +11,21 @@ package com.MyP.proyecto;
  * @author Armando ramírez González.
  * @author Cecilia Villatoro Ramos.
  */
-public class Cifrado {}
+public class Cifrado {
+
+  /* Constructor privado para evitar instanciación. */
+  private Cifrado() {}
+
+  /**
+   * Método cifra que encripta el texto recibido.
+   * @param llave Clave segura.
+   * @param linea Texto a encriptar.
+   * @return Texto encriptado.
+   * @throws IllegalArgumentException Si la llave no es de 256 bits.
+   */
+  public String cifra(String llave, String linea)
+   throws IllegalArgumentException {
+    s
+  }
+
+}
