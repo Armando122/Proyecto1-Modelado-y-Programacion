@@ -39,6 +39,7 @@ public class Interpolacion {
     ArrayList<BigInteger> valoresY = new ArrayList<BigInteger>();
     int contador = 1;
 
+    /* Separamos las parejas ordenadas. */
     for (BigInteger cordenada : parejas) {
       if (contador % 2 == 1) {
         valoresX.add(cordenada);
