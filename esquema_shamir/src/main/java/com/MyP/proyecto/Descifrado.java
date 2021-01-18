@@ -20,10 +20,8 @@ public class Descifrado {
    * @param llave Clave segura para desencriptar.
    * @param linea Texto a desencriptar.
    * @return Texto desencriptado.
-   * @throws IllegalArgumentException si la llave no es de 256 bits.
    */
-  public String descifra(String llave, String linea)
-   throws IllegalArgumentException {
+  public String descifra(String llave, String linea) {
     s
   }
 

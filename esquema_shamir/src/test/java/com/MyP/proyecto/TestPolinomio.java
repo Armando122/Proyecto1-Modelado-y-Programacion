@@ -1,7 +1,7 @@
 package com.MyP.proyecto;
 
-import org.junit.Assert;
 import java.util.ArrayList;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import com.MyP.proyecto.Polinomio;
@@ -41,5 +41,5 @@ public class TestPolinomio {
     Assert.assertTrue(parejas != null);
     Assert.assertTrue(parejas.size() == 12);
   }
-  
+
 }

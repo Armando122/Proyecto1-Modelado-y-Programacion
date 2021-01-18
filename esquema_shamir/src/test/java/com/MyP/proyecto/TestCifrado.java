@@ -16,41 +16,19 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class TestCifrado {
 
+  private String llave = "e3b0c44298fc1c149afbf4c8996fb924
+                          27ae41e4649b934ca495991b7852b855";
+  private String texto = "Este bloque será cifrado, hasta pronto. :)";
+  private String textoC = "Qh2vt8uVWpDVJ0FvF9I4SyaBhwDqLPQ6UyT4Pi2urDtFoKCaoUA2uqXhL9I4TFYM";
+
   /**
    * Prueba unitaria para el método cifra.
    */
   @Test public void TestCifra() {
-    String constrasenaDebil = "ark123h23";
-    String contrasenaFuerte = null;
+    String cifrado = Cifrar.cifra(llave, texto);
 
-    try {
-      MessageDigest digestion = MessageDigest.getInstance("SHA-256");
-      digestion.reset();
-      digestion.update(constrasenaDebil.getBytes("utf8"));
-      byte[] bytesContrasena = digestion.digest();
-      contrasenaFuerte = String.format("%064x", new BigInteger(1, digestion.digest()) );
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
-
-    BigInteger bonito = new BigInteger(contrasenaFuerte, 16);
-    String numDecimal = bonito.toString();
-    byte[] bytes = decodeHex(bonita.toCharArray());
-    String mejor = new String(bytes, "UTF-8");
-
-
-    String mierd = "https://medium.com/el-acordeon-del-programador/encriptaci%C3%B3n-aes-en-java-ebb81ddf82b";
-    String limpio = "";
-    try {
-      Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-      SecretKeySpec secret = new SecretKeySpec(mejor.getBytes(), "AES");
-      cipher.init(Cipher.ENCRYPT_MODE, secret);
-      byte[] encipt = cipher.doFinal(mierd.getBytes());
-      limpio = new String(Base64.getEncoder().encode(encipt));
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
-    System.out.println(limpio);
-    Assert.assertTrue();
+    Assert.assertTrue(cifrado != null);
+    Assert.assertTrue(cifrado.length() > 0);
+    Assert.assertTrue(cifrado.equals(textoC));
   }
 }
