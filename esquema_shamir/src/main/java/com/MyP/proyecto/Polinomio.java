@@ -28,9 +28,8 @@ public class Polinomio {
    * Constructor de Polinomio.
    * @param llave La clave segura de 256 bits.
    * @param puntosMin Los puntos mínimos que pasarán por ese polinomio.
-   * @throws IllegalArgumentException Si la llave no es de 256 bits.
    */
-  public Polinomio(String llave, int puntosMin) throws IllegalArgumentException {
+  public Polinomio(String llave, int puntosMin) {
     this.llave = new BigInteger(llave);
     this.puntos = puntosMin - 1;
     this.coeficientes = coeficientes(this.puntos);
@@ -51,14 +50,13 @@ public class Polinomio {
 
   /**
    * Método evaluaHorner.
-   * @param abcisa Punto donde se evaluará el polinomio.
-   * @return La oordenada del punto recibido.
+   * @return BigInteger[] Las n parejas ordenadas.
    */
-  public BigInteger evaluaHorner() {}
+  public BigInteger[] evaluaHorner() {}
 
   /**
    * Método reconstruye.
-   * Recupera la clave segura de 256 bits.
+   * Recupera la clave segura.
    * @param parejas Al menos t parejas ordenadas.
    * @return BigInteger La llave para desencriptar.
    * @throws IllegalArgumentException Si se reciben menos de los puntos mínimos.
