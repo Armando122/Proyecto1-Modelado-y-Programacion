@@ -1,7 +1,5 @@
 package com.MyP.proyecto;
 
-import java.lang.IllegalArgumentException;
-
 /**
  * Clase Cifrado.
  * Se encarga de cifrar un archivo dada una constraseña segura
@@ -21,10 +19,8 @@ public class Cifrado {
    * @param llave Clave segura.
    * @param linea Texto a encriptar.
    * @return Texto encriptado.
-   * @throws IllegalArgumentException Si la llave no es de 256 bits.
    */
-  public String cifra(String llave, String linea)
-   throws IllegalArgumentException {
+  public String cifra(String llave, String linea) {
     s
   }
 

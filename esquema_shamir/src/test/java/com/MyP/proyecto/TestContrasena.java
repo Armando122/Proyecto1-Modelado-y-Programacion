@@ -3,6 +3,7 @@ package com.MyP.proyecto;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
+import java.math.BigInteger;
 import com.MyP.proyecto.Constrasena;
 
 /**
@@ -15,7 +16,7 @@ public class TestContrasena {
    */
   @Test public void TestGeneraContrasena() {
     String prueba = Contrasena.generaContrasena("1243r242");
-    byte total[] = prueba.getBytes();
-    Assert.assertTrue(256 == total.length);
+    BigInteger numero = new BigInteger(prueba, 16);
+    Assert.assertTrue(256 == numero.bitLength());
   }
 }

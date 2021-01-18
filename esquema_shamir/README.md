@@ -60,7 +60,11 @@ java -jar target/EsquemaShamir.jar d evaluaciones.txt archivoCifrado.txt
 
 Se usaron las bibliotecas de Java:
 
-* [File](https://docs.oracle.com/javase/7/docs/api/java/io/File.html).
+* [BigInteger](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html).
+
+* [MessageDigest](https://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html).
+
+* [SecureRandom]().
 
 ## Para compilar y correr el código
 
