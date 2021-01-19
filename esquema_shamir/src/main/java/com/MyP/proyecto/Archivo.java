@@ -30,10 +30,8 @@ public class Archivo {
   /**
    * Método guardaArchivo que guarda el archivo recibido.
    * @param archivo Las líneas del archivo.
-   * @throws NullPointerException Si el archivo es nulo.
    */
-  public void guardaArchivo(ArrayList<String> archivo)
-   throws NullPointerException {
+  public void guardaArchivo(ArrayList<String> archivo) {
     //Codigo
   }
 
