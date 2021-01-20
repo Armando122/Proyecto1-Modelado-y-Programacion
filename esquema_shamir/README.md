@@ -32,10 +32,10 @@ En la línea de comandos se debe proporcionar:
 Ejemplo:
 
 ```
-java -jar target/EsquemaShamir.jar c evaluaciones.txt 15 10 archivo.txt
+java -jar target/EsquemaShamir.jar c archivo.txt 15 10 archivo.pdf
 ```
 
-Durante la ejecución de esta opción se le solicitará al usuario una contraseña (Sin hacer eco en la terminal).
+Durante la ejecución de esta opción se le solicitará al usuario una contraseña.
 
 ### Descifrar
 
@@ -55,6 +55,15 @@ java -jar target/EsquemaShamir.jar d evaluaciones.txt archivoCifrado.txt
 
 ### Salida
 
+En caso de que la entrada haya sido con la opción c, el programa devuelve:
+
+* Un archivo con el documento cifrado.
+
+* El archivo con n parejas.
+
+En caso de que la entrada haya sido con la opción d, el programa devuelve:
+
+* El archivo con el documento claro y con el nombre original.
 
 ## Bibliotecas utilizadas
 
@@ -65,6 +74,12 @@ Se usaron las bibliotecas de Java:
 * [MessageDigest](https://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html).
 
 * [SecureRandom]().
+
+* [Base64]().
+
+* [SecretKeySpec]().
+
+* [Cipher]().
 
 ## Para compilar y correr el código
 
@@ -83,7 +98,7 @@ mvn install
 Una vez instalado para ejecutar el código debe escribirse:
 
 ```
-java -jar target/EsquemaShamir.jar
+java -jar target/EsquemaShamir.jar {INSTRUCCIONES}
 ```
 
 ## Para correr las pruebas

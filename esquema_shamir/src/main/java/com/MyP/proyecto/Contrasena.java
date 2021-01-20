@@ -1,7 +1,5 @@
 package com.MyP.proyecto;
 
-import java.lang.NullPointerException;
-import java.lang.IllegalArgumentException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Arrays;

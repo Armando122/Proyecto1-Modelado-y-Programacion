@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.lang.NullPointerException;
 
 /**
  * Clase Archivo.
@@ -25,14 +24,28 @@ public class Archivo {
    * @return ArrayList<String> Las lineas del archivo en un arreglo.
    * @throws IOException Si no se encuentra el archivo.
    */
-  public ArrayList<String> leerArchivo(String ruta) throws IOException {}
+  public ArrayList<String> leerArchivo(String ruta) throws IOException {
+    ArrayList<String> archivo = new ArrayList<String>();
+    Path ruta = Paths.get(ruta);
+    for (String linea : Files.readAllLines(ruta)) {
+      archivo.add(linea);
+    }
+    return archivo;
+  }
 
   /**
    * Método guardaArchivo que guarda el archivo recibido.
-   * @param archivo Las líneas del archivo.
+   * @param archivo Las líneas del archivo a guardar.
+   * @param ruta - La ruta donde se guardaŕa el archivo
    */
-  public void guardaArchivo(ArrayList<String> archivo) {
-    //Codigo
+  public void guardaArchivo(String ruta, ArrayList<String> archivo)
+   throws IOException {
+       String archivoAGuardar = "";
+       Path rutaGuardado = Paths.get(ruta);
+       for (String linea : archivo) {
+         archivoAGuardar += linea + "\n";
+       }
+       Files.write(rutaGuardado, archivoAGuardar.getBytes());
   }
 
 }
