@@ -73,13 +73,15 @@ Se usaron las bibliotecas de Java:
 
 * [MessageDigest](https://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html).
 
-* [SecureRandom]().
+* [SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html).
 
-* [Base64]().
+* [Base64](https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html).
 
-* [SecretKeySpec]().
+* [SecretKeySpec](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/crypto/spec/SecretKeySpec.html).
 
-* [Cipher]().
+* [Cipher](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/crypto/Cipher.html).
+
+* [Console](https://docs.oracle.com/javase/7/docs/api/java/io/Console.html).
 
 ## Para compilar y correr el código
 
