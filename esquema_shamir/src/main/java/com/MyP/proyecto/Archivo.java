@@ -24,10 +24,10 @@ public class Archivo {
    * @return ArrayList<String> Las lineas del archivo en un arreglo.
    * @throws IOException Si no se encuentra el archivo.
    */
-  public ArrayList<String> leerArchivo(String ruta) throws IOException {
+  public static ArrayList<String> leerArchivo(String ruta) throws IOException {
     ArrayList<String> archivo = new ArrayList<String>();
-    Path ruta = Paths.get(ruta);
-    for (String linea : Files.readAllLines(ruta)) {
+    Path rutaA = Paths.get(ruta);
+    for (String linea : Files.readAllLines(rutaA)) {
       archivo.add(linea);
     }
     return archivo;
@@ -38,12 +38,12 @@ public class Archivo {
    * @param archivo Las líneas del archivo a guardar.
    * @param ruta - La ruta donde se guardaŕa el archivo
    */
-  public void guardaArchivo(String ruta, ArrayList<String> archivo)
+  public static void guardaArchivo(String ruta, ArrayList<String> archivo)
    throws IOException {
        String archivoAGuardar = "";
        Path rutaGuardado = Paths.get(ruta);
        for (String linea : archivo) {
-         archivoAGuardar += linea + "\n";
+         archivoAGuardar += linea;
        }
        Files.write(rutaGuardado, archivoAGuardar.getBytes());
   }
