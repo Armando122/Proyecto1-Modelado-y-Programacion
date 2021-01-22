@@ -14,14 +14,15 @@ import java.util.ArrayList;
 public class Interpolacion {
 
   /* Primo grande para trabajar modulo. */
-  private BigInteger modulo = new BigInteger(
-          "2083516173160912412343267463121244482512355622
-          26470491514186331217050270460481");
+  String modS = "208351617316091241234326"
+                + "7463121244482512355622"
+                + "26470491514186331217050270460481";
+  private BigInteger modulo = new BigInteger(modS);
 
   /**
    * Constructor privado para evitar instanciación.
    */
-  private Interpolacion() {}
+  protected Interpolacion() {}
 
   /**
    * Método reconstruye.
@@ -92,7 +93,7 @@ public class Interpolacion {
         numerador = numerador.multiply(equis);
 
         BigInteger restaDen = xElegida.subtract(equis);
-        denominador = denominador.multiply();
+        denominador = denominador.multiply(restaDen);
       }
 
       BigInteger numeradorMod = numerador.mod(modulo);
@@ -102,6 +103,8 @@ public class Interpolacion {
       bases.add(baseComp);
 
     }
+
+    return bases;
 
   }
 
