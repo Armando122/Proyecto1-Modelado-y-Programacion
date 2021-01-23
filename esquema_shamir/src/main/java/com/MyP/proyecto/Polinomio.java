@@ -14,9 +14,10 @@ import java.util.ArrayList;
 public class Polinomio {
 
   /* Primo grande para trabajar modulo. */
-  private BigInteger modulo = new BigInteger("2083516173160912412343267463121244482
-                              51235562226470491514186331217050270460
-                              481");
+  String numS = "208351617316091241234326746"
+                 + "312124448251235562226470"
+                 + "491514186331217050270460481";
+  private BigInteger modulo = new BigInteger(numS);
 
   /* Llave. */
   private BigInteger llave = new BigInteger("0");
@@ -50,8 +51,8 @@ public class Polinomio {
    */
   private BigInteger[] coeficientes() {
     BigInteger[] numeros = new BigInteger[this.puntos+1];
-    for (int i = 0; i<numeros.length+1; i++) {
-      numeros[i] = new BigInteger(256, new SecureRandom())
+    for (int i = 0; i<numeros.length-1; i++) {
+      numeros[i] = new BigInteger(256, new SecureRandom());
     }
     numeros[numeros.length-1] = this.llave;
     return numeros;

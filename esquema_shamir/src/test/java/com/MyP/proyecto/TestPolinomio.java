@@ -1,6 +1,7 @@
 package com.MyP.proyecto;
 
 import java.util.ArrayList;
+import java.math.BigInteger;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,8 +14,8 @@ public class TestPolinomio {
 
   /* Polinomio. */
   private Polinomio prueba = null;
-  private String llaveStr = "e3b0c44298fc1c149afb
-                             92427ae41e4649b934ca495991b7852b855";
+  private String llaveStr = "e3b0c44298fc1c149afb"
+                            + "92427ae41e4649b934ca495991b7852b855";
   private int evaluaciones = 6;
   private int puntosMin = 4;
   private ArrayList<BigInteger> parejas = new ArrayList<BigInteger>();

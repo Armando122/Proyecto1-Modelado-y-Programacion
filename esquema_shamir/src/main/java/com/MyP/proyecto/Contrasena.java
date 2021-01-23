@@ -27,7 +27,7 @@ public class Contrasena {
    * @param contrasenaU Contraseña que ingresó el usuario.
    * @return String Contraseña segura de 256 bits.
    */
-  public String generaContrasena(String contrasenaU) throws Exception {
+  public static String generaContrasena(String contrasenaU) throws Exception {
     String contSegura = null;
 
     MessageDigest digestion = MessageDigest.getInstance("SHA-256");

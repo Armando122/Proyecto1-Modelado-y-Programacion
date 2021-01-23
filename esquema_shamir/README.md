@@ -8,9 +8,9 @@ A partir de un archivo, se genera una versión confidencial de él. Mediante el 
 
 Proyecto realizado por:
 
-* Armando Ramírez González.
+* Armando Ramírez González - 317158225.
 
-* Cecilia Villatoro Ramos.
+* Cecilia Villatoro Ramos - 419002938.
 
 ### Entrada
 

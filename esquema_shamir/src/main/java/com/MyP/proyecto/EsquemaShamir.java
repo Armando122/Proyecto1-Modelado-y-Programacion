@@ -84,7 +84,7 @@ public class EsquemaShamir {
         System.exit(1);
       }
 
-      String nombCompletArch = "";
+      String nombCompletArch = documentoClaro;
       String soloNombreArch = "";
       /* Quitamos la ruta del archivo. */
       for (int i = 0; i<documentoClaro.length(); i++) {
@@ -110,7 +110,7 @@ public class EsquemaShamir {
       try {
         entrada = System.console();
         if (entrada != null) {
-          contrasenaUsr = entrada.readPassword();
+          contrasenaUsr = entrada.readPassword("Ingrese una contraseña: ");
         }
         contrasena = String.valueOf(contrasenaUsr);
       } catch(Exception e) {
@@ -148,19 +148,27 @@ public class EsquemaShamir {
 
       /* Se encripta. */
       ArrayList<String> archivoCifrado = new ArrayList<String>();
+      archivoCifrado.add(nombCompletArch + "\n");
       try {
-        archivoCifrado = Cifrado.cifra(contrasenaSegura, archivoOrig);
+        for (String linEncp : archivoOrig) {
+          Cifrado cifrador = new Cifrado();
+          String linCifrada = cifrador.cifra(contrasenaSegura, linEncp);
+          archivoCifrado.add(linCifrada);
+        }
       } catch(Exception e) {
       }
-      archivoCifrado.add(0, nombCompletArch);
 
       /* Guardamos el archivo cifrado y las n evaluaciones. */
       try {
-        Archivo.guardaArchivo("encriptado.aes", archivoCifrado);
-        Archivo.guardaArchivo("encriptado.frg", parejasOrdena);
+        String textEncript = archivoPuntos + ".aes";
+        Archivo.guardaArchivo(textEncript, archivoCifrado);
+        String parejasCompletas = archivoPuntos + ".frg";
+        Archivo.guardaArchivo(parejasCompletas, parejasOrdena);
       } catch(IOException e) {
         e.getMessage();
       }
+
+      return;
 
     }
 
@@ -185,7 +193,7 @@ public class EsquemaShamir {
       ArrayList<BigInteger> parejasListas = new ArrayList<BigInteger>();
       for (String pareja : puntos) {
         String inicio = pareja.replace("(", "");
-        String fin = pareja.replace(")", "");
+        String fin = inicio.replace(")", "");
         String[] parejas = fin.split(", ");
         BigInteger abcisa = new BigInteger(parejas[0]);
         BigInteger ordenada = new BigInteger(parejas[1]);
@@ -200,8 +208,16 @@ public class EsquemaShamir {
       /* Desencriptamos el archivo. */
       ArrayList<String> descifrado = new ArrayList<String>();
       try {
-        descifrado = Descifrado.descifra(llavecita, archivo);
+        String grande = archivo.get(0);
+        //for (String aDes : archivo) {
+          Descifrado descifrador = new Descifrado();
+          String descif = descifrador.descifra(llavecita, grande);
+          System.out.println(descif);
+          descifrado.add(descif);
+        //}
       } catch(Exception e) {
+        e.printStackTrace();
+        System.out.println("RUUUUN");
       }
 
       /* Guardamos el archivo. */
@@ -210,6 +226,8 @@ public class EsquemaShamir {
       } catch(IOException e) {
         e.getMessage();
       }
+
+      return;
 
     }
 
