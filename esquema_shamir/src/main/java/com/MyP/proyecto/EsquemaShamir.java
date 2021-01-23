@@ -184,6 +184,7 @@ public class EsquemaShamir {
         String inicio = pareja.replace("(", "");
         String fin = inicio.replace(")", "");
         String[] parejas = fin.split(", ");
+
         BigInteger abcisa = new BigInteger(parejas[0]);
         BigInteger ordenada = new BigInteger(parejas[1]);
         parejasListas.add(abcisa);
