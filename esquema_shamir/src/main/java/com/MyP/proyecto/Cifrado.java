@@ -1,6 +1,5 @@
 package com.MyP.proyecto;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -22,7 +21,7 @@ public class Cifrado {
   /**
    * Método cifra que encripta el texto recibido.
    * @param llave Clave segura.
-   * @param lineas Texto a encriptar.
+   * @param linea Texto a encriptar.
    * @return ArrayList<String> Texto encriptado.
    */
   public String cifra(String llave, String linea) throws Exception {
@@ -40,9 +39,8 @@ public class Cifrado {
     SecretKeySpec secreto = new SecretKeySpec(datos, "AES");
     modo.init(Cipher.ENCRYPT_MODE, secreto);
     byte[] linBytes = modo.doFinal(linea.getBytes());
-    String linEncript = new String(Base64.getEncoder().encode(linBytes));
 
-    return linEncript;
+    return new String(Base64.getEncoder().encode(linBytes));
   }
 
 }

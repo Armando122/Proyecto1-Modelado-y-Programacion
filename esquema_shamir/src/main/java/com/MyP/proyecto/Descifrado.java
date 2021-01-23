@@ -1,5 +1,6 @@
 package com.MyP.proyecto;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -23,8 +24,8 @@ public class Descifrado {
    * @param linea Texto a desencriptar.
    * @return ArrayList<String> Texto desencriptado.
    */
-  public String descifra(String llave, String linea) throws Exception  {
-     /* De String hexadecimal a arreglo de tipo byte. */
+  public String descifra(String llave, String linea) throws Exception {
+    /* De String hexadecimal a arreglo de tipo byte. */
      /* Código de: https://www.codercrunch.com/question/
      1029223515/how-convert-hex-string-bytes-and-viceversa-java */
      byte[] datos = new byte[llave.length() / 2];
@@ -36,11 +37,10 @@ public class Descifrado {
      Cipher modo = Cipher.getInstance("AES");
      SecretKeySpec secreto = new SecretKeySpec(datos, "AES");
      modo.init(Cipher.DECRYPT_MODE, secreto);
-     byte[] prim = Base64.getDecoder().decode(linea.getBytes("UTF-8"));
+     byte[] prim = Base64.getDecoder().decode(linea.getBytes(StandardCharsets.UTF_8));
      byte[] linBytes = modo.doFinal(prim);
-     String linDecript = new String(linBytes,"UTF-8");
 
-     return linDecript;
+     return new String(linBytes, StandardCharsets.UTF_8);
   }
 
 }

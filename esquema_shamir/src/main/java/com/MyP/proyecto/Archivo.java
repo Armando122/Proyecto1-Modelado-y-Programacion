@@ -25,7 +25,11 @@ public class Archivo {
    * @throws IOException Si no se encuentra el archivo.
    */
   public static ArrayList<String> leerArchivo(String ruta) throws IOException {
+<<<<<<< HEAD
     ArrayList<String> archivo = new ArrayList<String>();
+=======
+    ArrayList<String> archivo = new ArrayList<>();
+>>>>>>> a2d550b33765fce9a6e1442448566e99a7c67eb2
     Path rutaA = Paths.get(ruta);
     for (String linea : Files.readAllLines(rutaA)) {
       archivo.add(linea);

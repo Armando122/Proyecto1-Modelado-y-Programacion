@@ -1,11 +1,8 @@
 package com.MyP.proyecto;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.Arrays;
-import java.util.Base64;
-import javax.crypto.spec.SecretKeySpec;
-import javax.crypto.Cipher;
 
 /**
  * Clase Contraseña.
@@ -28,12 +25,11 @@ public class Contrasena {
    * @return String Contraseña segura de 256 bits.
    */
   public static String generaContrasena(String contrasenaU) throws Exception {
-    String contSegura = null;
+    String contSegura;
 
     MessageDigest digestion = MessageDigest.getInstance("SHA-256");
     digestion.reset();
-    digestion.update(contrasenaU.getBytes("utf8"));
-    byte[] dispersion = digestion.digest();
+    digestion.update(contrasenaU.getBytes(StandardCharsets.UTF_8));
     contSegura = String.format("%064x", new BigInteger(1, digestion.digest()) );
 
     return contSegura;
