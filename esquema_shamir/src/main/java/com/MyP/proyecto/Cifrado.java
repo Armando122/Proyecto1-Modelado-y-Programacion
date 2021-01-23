@@ -35,12 +35,12 @@ public class Cifrado {
     }
 
     /* Ciframos el texto. */
-    Cipher modo = Cipher.getInstance("AES");
+    Cipher modo = Cipher.getInstance("AES/ECB/PKCS5Padding");
     SecretKeySpec secreto = new SecretKeySpec(datos, "AES");
     modo.init(Cipher.ENCRYPT_MODE, secreto);
-    byte[] linBytes = modo.doFinal(linea.getBytes());
+    byte[] linBytes = modo.doFinal(linea.getBytes("UTF-8"));
 
-    return new String(Base64.getEncoder().encode(linBytes));
+    return Base64.getEncoder().encodeToString(linBytes);
   }
 
 }

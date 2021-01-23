@@ -103,6 +103,7 @@ public class EsquemaShamir {
         }
         contrasena = String.valueOf(contrasenaUsr);
       } catch(Exception e) {
+        System.out.println("Formato inválido de contraseña.");
       }
 
       /* Generamos contraseña segura. */
@@ -110,6 +111,7 @@ public class EsquemaShamir {
       try {
         contrasenaSegura = Contrasena.generaContrasena(contrasena);
       } catch(Exception e) {
+        System.out.println("Error al generar contraseña.");
       }
 
       Polinomio puntos = new Polinomio(contrasenaSegura, minPuntos, nPuntos);
@@ -137,7 +139,7 @@ public class EsquemaShamir {
 
       /* Se encripta. */
       ArrayList<String> archivoCifrado = new ArrayList<>();
-      archivoCifrado.add(nombCompletArch + "\n");
+      archivoCifrado.add(nombCompletArch);
       try {
         for (String linEncp : archivoOrig) {
           Cifrado cifrador = new Cifrado();
@@ -145,6 +147,7 @@ public class EsquemaShamir {
           archivoCifrado.add(linCifrada);
         }
       } catch(Exception e) {
+        System.out.println("Error al cifrar el archivo.");
       }
 
       /* Guardamos el archivo cifrado y las n evaluaciones. */
@@ -198,16 +201,13 @@ public class EsquemaShamir {
       /* Desencriptamos el archivo. */
       ArrayList<String> descifrado = new ArrayList<>();
       try {
-        String grande = archivo.get(0);
-        //for (String aDes : archivo) {
+        for (String aDes : archivo) {
           Descifrado descifrador = new Descifrado();
-          String descif = descifrador.descifra(llavecita, grande);
-          System.out.println(descif);
+          String descif = descifrador.descifra(llavecita, aDes);
           descifrado.add(descif);
-        //}
+        }
       } catch(Exception e) {
-        e.printStackTrace();
-        System.out.println("RUUUUN");
+        System.out.println("Un error ha ocurrido al desencriptar el archivo.");
       }
 
       /* Guardamos el archivo. */

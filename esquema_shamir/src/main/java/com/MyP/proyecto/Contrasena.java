@@ -30,7 +30,7 @@ public class Contrasena {
     MessageDigest digestion = MessageDigest.getInstance("SHA-256");
     digestion.reset();
     digestion.update(contrasenaU.getBytes(StandardCharsets.UTF_8));
-    contSegura = String.format("%064x", new BigInteger(1, digestion.digest()) );
+    contSegura = String.format("%064x", new BigInteger(1, digestion.digest()).abs() );
 
     return contSegura;
   }

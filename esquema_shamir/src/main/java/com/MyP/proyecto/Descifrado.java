@@ -34,7 +34,7 @@ public class Descifrado {
      }
 
      /* Desciframos el texto. */
-     Cipher modo = Cipher.getInstance("AES");
+     Cipher modo = Cipher.getInstance("AES/ECB/PKCS5PADDING");
      SecretKeySpec secreto = new SecretKeySpec(datos, "AES");
      modo.init(Cipher.DECRYPT_MODE, secreto);
      byte[] prim = Base64.getDecoder().decode(linea.getBytes(StandardCharsets.UTF_8));

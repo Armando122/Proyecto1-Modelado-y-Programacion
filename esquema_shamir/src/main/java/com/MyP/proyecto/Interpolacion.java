@@ -62,6 +62,7 @@ public class Interpolacion {
     }
 
     resultado = resultado.mod(modulo);
+    resultado = resultado.abs();
     return resultado.toString(16);
 
   }
@@ -86,10 +87,12 @@ public class Interpolacion {
           continue;
         }
 
-        numerador = numerador.multiply(equis);
+        BigInteger resta = equis.negate().mod(modulo);
+        numerador = numerador.multiply(resta);
 
         BigInteger restaDen = xElegida.subtract(equis);
-        denominador = denominador.multiply(restaDen);
+        BigInteger modRestaDenom = restaDen.mod(modulo);
+        denominador = denominador.multiply(modRestaDenom);
       }
 
       BigInteger numeradorMod = numerador.mod(modulo);
