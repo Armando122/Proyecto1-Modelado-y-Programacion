@@ -1,7 +1,6 @@
 package com.MyP.proyecto;
 
 import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 
 /**
@@ -36,8 +35,8 @@ public class Interpolacion {
    */
   public String reconstruye(ArrayList<BigInteger> parejas) {
 
-    ArrayList<BigInteger> valoresX = new ArrayList<BigInteger>();
-    ArrayList<BigInteger> valoresY = new ArrayList<BigInteger>();
+    ArrayList<BigInteger> valoresX = new ArrayList<>();
+    ArrayList<BigInteger> valoresY = new ArrayList<>();
     int contador = 1;
 
     /* Separamos las parejas ordenadas. */
@@ -63,19 +62,18 @@ public class Interpolacion {
     }
 
     resultado = resultado.mod(modulo);
-    String llavecita = resultado.toString(16);
-    return llavecita;
+    return resultado.toString(16);
 
   }
 
-  /*
+  /**
    * Método auxiliar base, que evalua la base del polinomio
    * para ese valor.
    * Recibe la lista de valores de x.
    * Devuelve las bases del polinomio.
    */
   private ArrayList<BigInteger> base(ArrayList<BigInteger> valoresDeX) {
-    ArrayList<BigInteger> bases = new ArrayList<BigInteger>();
+    ArrayList<BigInteger> bases = new ArrayList<>();
 
     for (int i = 0; i<valoresDeX.size(); i++) {
       BigInteger numerador = BigInteger.ONE;
@@ -88,8 +86,6 @@ public class Interpolacion {
           continue;
         }
 
-        BigInteger cero = BigInteger.ZERO;
-        BigInteger resta = cero.subtract(equis);
         numerador = numerador.multiply(equis);
 
         BigInteger restaDen = xElegida.subtract(equis);
@@ -98,7 +94,7 @@ public class Interpolacion {
 
       BigInteger numeradorMod = numerador.mod(modulo);
       BigInteger denominadorMod = denominador.mod(modulo);
-      BigInteger enModulo = denominador.modInverse(modulo);
+      BigInteger enModulo = denominadorMod.modInverse(modulo);
       BigInteger baseComp = numeradorMod.multiply(enModulo);
       bases.add(baseComp);
 
