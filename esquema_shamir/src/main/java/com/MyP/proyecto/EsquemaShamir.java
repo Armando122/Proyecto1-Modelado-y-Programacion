@@ -2,9 +2,7 @@ package com.MyP.proyecto;
 
 import java.io.Console;
 import java.io.IOException;
-import java.io.IOError;
 import java.math.BigInteger;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -85,7 +83,6 @@ public class EsquemaShamir {
       }
 
       String nombCompletArch = documentoClaro;
-      String soloNombreArch = "";
       /* Quitamos la ruta del archivo. */
       for (int i = 0; i<documentoClaro.length(); i++) {
         char caracter = documentoClaro.charAt(i);
@@ -94,18 +91,10 @@ public class EsquemaShamir {
           nombCompletArch = documentoClaro.substring(i+1);
         }
       }
-      /* Quitamos la extensión del documento. */
-      for (int j = 0; j<nombCompletArch.length(); j++) {
-        char caracter = nombCompletArch.charAt(j);
-        String signoMalo = ".";
-        if (caracter == signoMalo.charAt(0)) {
-          soloNombreArch = nombCompletArch.substring(0,j);
-        }
-      }
 
       /* Obtener contraseña usuario. */
       char[] contrasenaUsr = null;
-      Console entrada = null;
+      Console entrada;
       String contrasena = null;
       try {
         entrada = System.console();
@@ -125,7 +114,7 @@ public class EsquemaShamir {
 
       Polinomio puntos = new Polinomio(contrasenaSegura, minPuntos, nPuntos);
       ArrayList<BigInteger> parejas = puntos.evaluaHorner();
-      ArrayList<String> parejasOrdena = new ArrayList<String>();
+      ArrayList<String> parejasOrdena = new ArrayList<>();
       /* Ordenamos los puntos. */
       String pareja = "(";
       for (BigInteger cordenada : parejas) {
@@ -139,7 +128,7 @@ public class EsquemaShamir {
       }
 
       /* Leemos el archivo. */
-      ArrayList<String> archivoOrig = new ArrayList<String>();
+      ArrayList<String> archivoOrig = new ArrayList<>();
       try {
         archivoOrig = Archivo.leerArchivo(documentoClaro);
       } catch(IOException e) {
@@ -147,7 +136,7 @@ public class EsquemaShamir {
       }
 
       /* Se encripta. */
-      ArrayList<String> archivoCifrado = new ArrayList<String>();
+      ArrayList<String> archivoCifrado = new ArrayList<>();
       archivoCifrado.add(nombCompletArch + "\n");
       try {
         for (String linEncp : archivoOrig) {
@@ -178,8 +167,8 @@ public class EsquemaShamir {
       /* Obtención de datos. */
       String evaluaciones = args[1];
       String archivoCifrado = args[2];
-      ArrayList<String> puntos = new ArrayList<String>();
-      ArrayList<String> archivo = new ArrayList<String>();
+      ArrayList<String> puntos = new ArrayList<>();
+      ArrayList<String> archivo = new ArrayList<>();
 
       try {
         puntos = Archivo.leerArchivo(evaluaciones);
@@ -190,7 +179,7 @@ public class EsquemaShamir {
 
       String nombreArch = archivo.remove(0);
 
-      ArrayList<BigInteger> parejasListas = new ArrayList<BigInteger>();
+      ArrayList<BigInteger> parejasListas = new ArrayList<>();
       for (String pareja : puntos) {
         String inicio = pareja.replace("(", "");
         String fin = inicio.replace(")", "");
@@ -206,7 +195,7 @@ public class EsquemaShamir {
       String llavecita = inicioLlave.reconstruye(parejasListas);
 
       /* Desencriptamos el archivo. */
-      ArrayList<String> descifrado = new ArrayList<String>();
+      ArrayList<String> descifrado = new ArrayList<>();
       try {
         String grande = archivo.get(0);
         //for (String aDes : archivo) {
