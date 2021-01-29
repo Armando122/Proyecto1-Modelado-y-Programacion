@@ -17,9 +17,10 @@ public class Proyecto2 {
 
     /* Imprime el uso del programa y lo termina. */
     private static void uso() {
-      System.err.println("El archivo de entrada debe especificarse como:\n"
-                      + " java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2"
-                      + " imagen.jpeg\n");
+      System.err.println("\nEl archivo de entrada debe especificarse como:\n\n"
+                      + "  java -jar target/Proyecto2.jar imagen.jpeg\n\n"
+                      + "   - Para guardar la imagen segementada debe agregarse"
+                      + " la bandera s.");
       System.exit(1);
     }
 
