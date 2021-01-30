@@ -23,7 +23,7 @@ public class TestProyecto {
      * Crea una imagen para las pruebas.
      */
     public TestProyecto() throws IOException {
-        plantilla = ImageIO.read(new File("CloudCoverageImgs/prueba.jpg"));
+        plantilla = ImageIO.read(getClass().getResourceAsStream("/prueba.jpg"));
         imgP = new Imagen(plantilla, nombre);
     }
 
