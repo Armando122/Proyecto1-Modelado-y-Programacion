@@ -75,7 +75,7 @@ java -jar target/Proyecto2.jar imagen.jpg s
 Por ejemplo:
 
 ```
-java -cp target/Proyecto-2.jar CloudCoverageImgs/11839.jpg S
+java -jar target/Proyecto-2.jar CloudCoverageImgs/11839.jpg S
 ```
 
 ## Para correr las pruebas
