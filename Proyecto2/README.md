@@ -17,12 +17,12 @@ La entrada del programa es el nombre de una imagen en formato `.jpg` de 4,368 p�
 El programa recibe en la entrada estándar los archivos de imagen. Las siguientes entradas son válidas para el programa:
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg S
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg s
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 Nubes 11773.jpg
+java -jar target/Proyecto2.jar Nubes_11773.jpg S
+java -jar target/Proyecto2.jar Nubes_11773.jpg s
+java -jar target/Proyecto2.jar Nubes_11773.jpg
 ```
 
-Donde `Nubes 11773.jpg` es la imagen y la etiqueta `s` le indica al programa si debe entregarse el archivo en blanco y negro con las nubes en blanco y el cielo negro.
+Donde `Nubes_11773.jpg` es la imagen y la etiqueta `s` le indica al programa si debe entregarse el archivo en blanco y negro con las nubes en blanco y el cielo negro.
 
 ### Salida
 
@@ -57,19 +57,19 @@ mvn install
 Una vez instalado para ejecutar el código debe escribirse:
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg
+java -jar target/Proyecto2.jar imagen.jpg
 ```
 
 o si se quiere obtener la imagen segmentada debe escribirse:
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg S
+java -jar target/Proyecto2.jar imagen.jpg S
 ```
 
 o
 
 ```
-java -cp target/Proyecto-2.jar MyP.proyectoDos.Proyecto2 imagen.jpg s
+java -jar target/Proyecto2.jar imagen.jpg s
 ```
 
 ## Para correr las pruebas
@@ -87,6 +87,14 @@ mvn test
 ```
 
 Lo que ejecutará las pruebas del código.
+
+## Documentación
+
+Para generar la documentación debe escribirse:
+
+```
+mvn site
+```
 
 ## Enlace del repositorio
 
