@@ -87,7 +87,7 @@ public class Proyecto2 {
           //Guardar imagen segmentada.
           BufferedImage imagenSeg = nubes.dibujaCielo();
           String nombreCompleto = nubes.obtenerNombre() + "-seg.png";
-          File imgSalida = new File(nombreCompleto);
+          File imgSalida = new File("salida/" + nombreCompleto);
           ImageIO.write(imagenSeg, "png", imgSalida);
         }
       } catch(IOException e) {
